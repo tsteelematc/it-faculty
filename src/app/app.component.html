@@ -1,25 +1,34 @@
-<mat-toolbar>
-  <span
-    style='flex: 1 1 auto; text-align: center;'
-  >
-    <button 
-      mat-mini-fab 
-      color='basic'
-      (click)='previousSemester()'
+<mat-toolbar color='primary'>
+  <mat-toolbar-row>
+    <small
+      style='flex: 1 1 auto; text-align: center;'
     >
-      <mat-icon>keyboard_arrow_left</mat-icon>
-    </button>
-    &nbsp;
-    {{ displaySemester }} {{ displayYear }}
-    &nbsp;
-    <button 
-      mat-mini-fab 
-      color='basic'
-      (click)='nextSemester()'
+      Madison College IT Classes
+    </small>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <span
+      style='flex: 1 1 auto; text-align: center;'
     >
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
-  </span>
+      <button 
+        mat-mini-fab 
+        color='primary'
+        (click)='previousSemester()'
+      >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      &nbsp;
+      {{ displaySemester }} {{ displayYear }}
+      &nbsp;
+      <button 
+        mat-mini-fab 
+        color='primary'
+        (click)='nextSemester()'
+      >
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </span>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-tab-group>
