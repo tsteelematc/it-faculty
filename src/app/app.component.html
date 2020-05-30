@@ -1,67 +1,40 @@
 <mat-toolbar color='primary'>
   <mat-toolbar-row>
-    <small
-      style='flex: 1 1 auto; text-align: center;'
-    >
+    <small style='flex: 1 1 auto; text-align: center;'>
       Madison College IT Classes
     </small>
   </mat-toolbar-row>
   <mat-toolbar-row>
-    <span
-      style='flex: 1 1 auto; text-align: center;'
-    >
-      <button 
-        mat-mini-fab 
-        color='primary'
-        (click)='previousSemester()'
-      >
-        <mat-icon>keyboard_arrow_left</mat-icon>
-      </button>
-      &nbsp;
-      &nbsp;
-      {{ displaySemester }} {{ displayYear }}
-      &nbsp;
-      &nbsp;
-      <button 
-        mat-mini-fab 
-        color='primary'
-        (click)='nextSemester()'
-      >
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-    </span>
+    <button mat-mini-fab color='primary' (click)='previousSemester()'>
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <span style='flex: 1 1 auto;'></span>
+    {{ displaySemester }} {{ displayYear }}
+    <span style='flex: 1 1 auto;'></span>
+    <button mat-mini-fab color='primary' (click)='nextSemester()'>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div style="padding: 15px;">
-  <mat-card
-    *ngIf='!hasSemesterData && !coursesSvc.loading'
-  >
+  <mat-card *ngIf='!hasSemesterData && !coursesSvc.loading'>
     <h3>
       Sorry, no data found for this semester...
     </h3>
   </mat-card>
 
-  <mat-card
-    *ngIf='coursesSvc.loading'
-  >
-    <mat-spinner 
-      diameter='30'
-      strokeWidth='5'
-      style='margin: 0 auto;'
-    >
+  <mat-card *ngIf='coursesSvc.loading'>
+    <mat-spinner diameter='30' strokeWidth='5' style='margin: 0 auto;'>
     </mat-spinner>
   </mat-card>
 
-  <mat-tab-group
-    *ngIf='hasSemesterData'
-    style="margin: -15px;"
-  >
-    <mat-tab label="By Course"> 
+  <mat-tab-group *ngIf='hasSemesterData' style="margin: -15px;">
+    <mat-tab label="By Course">
       Courses
     </mat-tab>
     <mat-tab label="By Faculty">
-      Faculty 
+      Faculty
     </mat-tab>
   </mat-tab-group>
 </div>
