@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CoursesService } from './courses.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private coursesSvc: CoursesService) {}
+
   title = 'it-faculty';
 
   semesters = [
@@ -31,6 +35,8 @@ export class AppComponent {
       else {
         this.displaySemesterIndex--
       }
+
+      this.coursesSvc.loadCourses();
   }
 
   nextSemester() {
@@ -42,6 +48,8 @@ export class AppComponent {
       else {
         this.displaySemesterIndex++
       }
+
+      this.coursesSvc.loadCourses();
   }
 
   hasSemesterData = false;

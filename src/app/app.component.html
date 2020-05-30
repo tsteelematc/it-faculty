@@ -33,19 +33,35 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card
-  *ngIf='!hasSemesterData'
->
-  Sorry, no data found for this semester...
-</mat-card>
+<div style="padding: 15px;">
+  <mat-card
+    *ngIf='!hasSemesterData && !coursesSvc.loading'
+  >
+    <h3>
+      Sorry, no data found for this semester...
+    </h3>
+  </mat-card>
 
-<mat-tab-group
-  *ngIf='hasSemesterData'
->
-  <mat-tab label="By Course & Delivery Format"> 
-    Courses
-  </mat-tab>
-  <mat-tab label="By Faculty">
-     Faculty 
-  </mat-tab>
-</mat-tab-group>
+  <mat-card
+    *ngIf='coursesSvc.loading'
+  >
+    <mat-spinner 
+      diameter='30'
+      strokeWidth='5'
+      style='margin: 0 auto;'
+    >
+    </mat-spinner>
+  </mat-card>
+
+  <mat-tab-group
+    *ngIf='hasSemesterData'
+    style="margin: -15px;"
+  >
+    <mat-tab label="By Course"> 
+      Courses
+    </mat-tab>
+    <mat-tab label="By Faculty">
+      Faculty 
+    </mat-tab>
+  </mat-tab-group>
+</div>
