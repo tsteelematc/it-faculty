@@ -31,20 +31,38 @@
 
   <mat-tab-group *ngIf='hasSemesterData && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab label="By Course">
-      <mat-list>
+      <mat-card
+        style="margin-top: 15px; margin-left: 15px; margin-right: 15px;"
+        *ngFor='let c of currentSemesterByClass'
+      >
+        <mat-card-title>
+          <h3>
+            {{ c.class }}
+          </h3>
+        </mat-card-title>
         <div
-          *ngFor='let c of currentSemesterByClass'
+          *ngFor='let f of c.faculty'
         >
-          <h3 matSubheader>{{ c.class }}</h3>
-          <mat-list-item *ngFor="let f of c.faculty">
-              <h4 matLine>{{ f }}</h4>
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          {{ f }}
         </div>
-      </mat-list>
+      </mat-card>
     </mat-tab>
     <mat-tab label="By Faculty">
-      Faculty
+      <mat-card
+        style="margin-top: 15px; margin-left: 15px; margin-right: 15px;"
+        *ngFor='let f of currentSemesterByFaculty'
+      >
+        <mat-card-title>
+          <h3>
+            {{ f.faculty }}
+          </h3>
+        </mat-card-title>
+        <div
+          *ngFor='let c of f.classes'
+        >
+          {{ c }}
+        </div>
+      </mat-card>
     </mat-tab>
   </mat-tab-group>
 </div>
