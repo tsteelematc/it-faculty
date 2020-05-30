@@ -2,13 +2,21 @@
   <span
     style='flex: 1 1 auto; text-align: center;'
   >
-    <button mat-mini-fab color='basic'>
+    <button 
+      mat-mini-fab 
+      color='basic'
+      (click)='previousSemester()'
+    >
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
     &nbsp;
-    Fall 2020
+    {{ displaySemester }} {{ displayYear }}
     &nbsp;
-    <button mat-mini-fab color='basic'>
+    <button 
+      mat-mini-fab 
+      color='basic'
+      (click)='nextSemester()'
+    >
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
   </span>
