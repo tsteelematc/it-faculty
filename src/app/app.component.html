@@ -29,7 +29,7 @@
     </mat-spinner>
   </mat-card>
 
-  <mat-tab-group *ngIf='hasSemesterData' style="margin: -15px;">
+  <mat-tab-group *ngIf='hasSemesterData && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab label="By Course">
       Courses
     </mat-tab>

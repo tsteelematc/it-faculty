@@ -52,5 +52,5 @@ export class AppComponent {
       this.coursesSvc.loadCourses();
   }
 
-  hasSemesterData = false;
+  hasSemesterData = true;
 }
