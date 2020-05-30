@@ -31,7 +31,17 @@
 
   <mat-tab-group *ngIf='hasSemesterData && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab label="By Course">
-      Courses
+      <mat-list>
+        <div
+          *ngFor='let c of currentSemesterByClass'
+        >
+          <h3 matSubheader>{{ c.class }}</h3>
+          <mat-list-item *ngFor="let f of c.faculty">
+              <h4 matLine>{{ f }}</h4>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-list>
     </mat-tab>
     <mat-tab label="By Faculty">
       Faculty
