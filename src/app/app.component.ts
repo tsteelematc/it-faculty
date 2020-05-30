@@ -43,4 +43,6 @@ export class AppComponent {
         this.displaySemesterIndex++
       }
   }
+
+  hasSemesterData = false;
 }

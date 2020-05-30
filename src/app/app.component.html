@@ -33,7 +33,15 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-tab-group>
+<mat-card
+  *ngIf='!hasSemesterData'
+>
+  Sorry, no data found for this semester...
+</mat-card>
+
+<mat-tab-group
+  *ngIf='hasSemesterData'
+>
   <mat-tab label="By Course & Delivery Format"> 
     Courses
   </mat-tab>
