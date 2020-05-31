@@ -18,7 +18,7 @@
 </mat-toolbar>
 
 <div style="padding: 15px;">
-  <mat-card *ngIf='!hasSemesterData && !coursesSvc.loading'>
+  <mat-card *ngIf='currentSemesterByClass.length == 0 && currentSemesterByFaculty.length == 0 && !coursesSvc.loading'>
     <h3>
       Sorry, no data found for this semester...
     </h3>
@@ -29,7 +29,7 @@
     </mat-spinner>
   </mat-card>
 
-  <mat-tab-group *ngIf='hasSemesterData && !coursesSvc.loading' style="margin: -15px;">
+  <mat-tab-group *ngIf='currentSemesterByClass.length > 0 && currentSemesterByFaculty.length > 0 && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab label="By Course">
       <mat-card
         style="margin-top: 15px; margin-left: 15px; margin-right: 15px;"

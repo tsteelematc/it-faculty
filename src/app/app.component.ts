@@ -91,8 +91,6 @@ export class AppComponent {
       }
   }
 
-  hasSemesterData = true;
-
   initTabs() {
     // Setup the two maps being used to show the data to the user.
     const groupedByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
