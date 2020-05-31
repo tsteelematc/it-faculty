@@ -35,8 +35,12 @@
                   {
                       "AttributeName": "semester",
                       "AttributeType": "S"
+                  }, 
+                  {
+                    "AttributeName": "classes",
+                    "AttributeType": "S"
                   } 
-                  
+
                 ],
                 "KeySchema": [
                   
