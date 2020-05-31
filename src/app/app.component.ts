@@ -102,10 +102,13 @@ export class AppComponent {
       )
     ;
 
-    this.currentSemesterByClass = [...groupedByClass].map(x => ({
-      class: x[0]
-      , faculty: [...x[1]]
-    }));
+    this.currentSemesterByClass = [...groupedByClass]
+      .map(x => ({
+        class: x[0]
+        , faculty: [...x[1]]
+      }))
+      .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
+    ;
 
     //console.log(this.currentSemesterByClass);
 
@@ -116,10 +119,13 @@ export class AppComponent {
       )
     ;
 
-    this.currentSemesterByFaculty = [...groupedByFaculty].map(x => ({
-      faculty: x[0]
-      , classes: [...x[1]]
-    }));
+    this.currentSemesterByFaculty = [...groupedByFaculty]
+      .map(x => ({
+        faculty: x[0]
+        , classes: [...x[1]]
+      }))
+      .sort((a, b) => a.faculty == b.faculty ? 0 : a.faculty < b.faculty ? -1 : 1)
+    ;
 
     //console.log(this.currentSemesterByFaculty);
   }
