@@ -1,1 +1,8 @@
-{}
+{
+	"storage": {
+		"itfacultydb": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}
