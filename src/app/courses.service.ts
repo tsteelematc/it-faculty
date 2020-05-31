@@ -48,83 +48,83 @@ export class CoursesService {
               : semester == 'Summer 2020'
                 ? [
                   { 
-                      class: 'Exploration of Info Technology'
+                      class: 'Exploration of Info Technology (online)'
                       , faculty: 'Milbauer, Nina M'
                   }
                   , { 
-                      class: 'Preparation for an IT Career'
+                      class: 'Preparation for an IT Career (online)'
                       , faculty: 'Bethea, Kim M' 
                   }
                   , { 
-                      class: 'Preparation for an IT Career'
+                      class: 'Preparation for an IT Career (online)'
                       , faculty: 'Close, Jeffrey R'
                   }
                   , { 
-                      class: 'Firewall/VPN Technologies'
+                      class: 'Firewall/VPN Technologies (online)'
                       , faculty: 'Roth, Damian'
                   }
                   , { 
-                      class: 'IT Security Awareness'
+                      class: 'IT Security Awareness (online)'
                       , faculty: 'Milbauer, Nina M'
                   }
                   , { 
-                      class: 'IT Security Awareness'
+                      class: 'IT Security Awareness (online)'
                       , faculty: 'Gallus, Aaron T'
                   }
                   , { 
-                      class: 'Linux Server 2 (Security)'
+                      class: 'Linux Server 2 (Security) (online)'
                       , faculty: 'Masino,Michael'
                   }
                   , { 
-                      class: 'Python Programming'
+                      class: 'Python Programming (online)'
                       , faculty: 'Johnson, Victor'
                   }
                   , { 
-                      class: 'Java Programming'
+                      class: 'Java Programming (online)'
                       , faculty: 'Waite, Paula'
                   }
                   , { 
-                      class: 'Intro Prog with JavaScript'
+                      class: 'Intro Prog with JavaScript (online)'
                       , faculty: 'Rodas,Lori'
                   }
                   , { 
-                      class: 'Website Development-HTML5'
+                      class: 'Website Development-HTML5 (online)'
                       , faculty: 'Sutfin, Temple'
                   }
                   , { 
-                      class: 'Advanced CSS'
+                      class: 'Advanced CSS (online)'
                       , faculty: 'Rodas,Lori'
                   }
                   , { 
-                      class: 'Advanced Javascript'
+                      class: 'Advanced Javascript (online)'
                       , faculty: 'Witkowski, Bryan'
                   }
                   , { 
-                      class: 'Windows Server 1'
+                      class: 'Windows Server 1 (online)'
                       , faculty: 'Jaedike, Dale'
                   }
                   , { 
-                      class: 'Enterprise Client'
+                      class: 'Enterprise Client (online)'
                       , faculty: 'Larsen McCarthy, Lana'
                   }
                   , { 
-                      class: 'Linux Server 1'
+                      class: 'Linux Server 1 (online)'
                       , faculty: 'Snelling, Angela'
                   }
                   , { 
-                      class: 'Introduction to Databases'
+                      class: 'Introduction to Databases (online)'
                       , faculty: 'Weishan, Matthew'
                   }
                   , { 
-                      class: 'Introduction to Databases'
+                      class: 'Introduction to Databases (online)'
                       , faculty: 'McCullough, Kenneth'
                   }
                   , { 
-                      class: 'SQL Database Programming'
+                      class: 'SQL Database Programming (online)'
                       , faculty: 'Steele, Thomas'
                   }
                   , { 
-                      class: 'Intro to Cloud Computing'
+                      class: 'Intro to Cloud Computing (online)'
                       , faculty: 'Chambers, Curtis'
                   }                  
                 ]
