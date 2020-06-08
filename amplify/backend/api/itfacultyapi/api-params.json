@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/semester",
+            "lambdaFunction": "itfacultylambda",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "itfacultyapi",
+    "apiName": "itfacultyapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "itfacultylambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-itfaculty-dev-170010-authRole",
+        "unAuthRoleName": "amplify-itfaculty-dev-170010-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "itfacultylambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
