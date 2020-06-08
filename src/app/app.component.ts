@@ -95,7 +95,9 @@ export class AppComponent {
     // Setup the two maps being used to show the data to the user.
     const groupedByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
       .reduce(
-        (acc, x) => acc.has(x.class) ? acc.set(x.class, [...acc.get(x.class), x.faculty]) : acc.set(x.class, [x.faculty])
+        (acc, x) => acc.has(x.class) 
+          ? acc.set(x.class, [...acc.get(x.class), x.faculty]) 
+          : acc.set(x.class, [x.faculty])
         , new Map()
       )
     ;
@@ -112,7 +114,9 @@ export class AppComponent {
 
     const groupedByFaculty = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
       .reduce(
-        (acc, x) => acc.has(x.faculty) ? acc.set(x.faculty, [...acc.get(x.faculty), x.class]) : acc.set(x.faculty, [x.class])
+        (acc, x) => acc.has(x.faculty) 
+          ? acc.set(x.faculty, [...acc.get(x.faculty), x.class]) 
+          : acc.set(x.faculty, [x.class])
         , new Map()
       )
     ;
