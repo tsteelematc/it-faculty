@@ -76,7 +76,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-itfaculty-dev-134722-deployment",
-					"S3Key": "amplify-builds/itfacultylambda-756f506979654e546c79-build.zip"
+					"S3Key": "amplify-builds/itfacultylambda-746f52306e7946456565-build.zip"
 				}
 			}
 		},
