@@ -26,20 +26,5 @@
 			]
 		}
 	},
-	"api": {
-		"itfacultyapi": {
-			"service": "API Gateway",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "itfacultylambda",
-					"attributes": [
-						"Name",
-						"Arn"
-					]
-				}
-			]
-		}
-	}
+	"api": {}
 }
