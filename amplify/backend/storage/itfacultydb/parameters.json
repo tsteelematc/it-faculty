@@ -1,5 +1,0 @@
-{
-    "tableName": "itfacultyclasses",
-    "partitionKeyName": "semester",
-    "partitionKeyType": "S"
-}
