@@ -75,6 +75,7 @@ export class AppComponent {
       try {
 
         if (!this.loadedSemesters.has(`${this.displaySemester} ${this.displayYear}`)) {
+          this.coursesSvc.testCallApiGateway();
           const loadedSemester = await this.coursesSvc.loadCourses(`${this.displaySemester} ${this.displayYear}`);
           //console.log(loadedSemester);
           this.loadedSemesters.set(`${this.displaySemester} ${this.displayYear}`, loadedSemester)

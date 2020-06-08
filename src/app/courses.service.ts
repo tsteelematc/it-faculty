@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
-  constructor() { }
+  constructor(private httpSvc: HttpClient ) { }
+
+  testCallApiGateway() {
+    this.httpSvc
+      .get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/semester:Summer%202020')
+      //.get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/Foo')
+      .subscribe(
+        data => console.log(data)
+        , err => console.error(err)
+      )
+    ;
+  }
 
   loadCourses(semester: string) {
     return new Promise<any>(
