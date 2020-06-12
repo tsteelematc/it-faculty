@@ -78,6 +78,7 @@ export class AppComponent {
           this.coursesSvc.testCallApiGateway();
           const loadedSemester = await this.coursesSvc.loadCourses(`${this.displaySemester} ${this.displayYear}`);
           //console.log(loadedSemester);
+          //console.log(JSON.stringify(loadedSemester));
           this.loadedSemesters.set(`${this.displaySemester} ${this.displayYear}`, loadedSemester)
           //console.log(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`));
         }
@@ -93,13 +94,17 @@ export class AppComponent {
   }
 
   initTabs() {
+
+    console.log(JSON.stringify(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)));
+    
+
     // Setup the two maps being used to show the data to the user.
     const groupedByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
       .reduce(
         (acc, x) => acc.has(x.class) 
-          ? acc.set(x.class, [...acc.get(x.class), x.faculty]) 
-          : acc.set(x.class, [x.faculty])
-        , new Map()
+          ? acc.set(x.class, acc.get(x.class).set(x.faculty)) 
+          : acc.set(x.class, new Set([...x.faculty]))
+        , new Map<string, Set<string>>()
       )
     ;
 
