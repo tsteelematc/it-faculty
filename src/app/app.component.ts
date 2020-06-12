@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CoursesService } from './courses.service';
-import { mapToMapExpression } from '@angular/compiler/src/render3/util';
 
 @Component({
   selector: 'app-root',
@@ -120,17 +119,21 @@ export class AppComponent {
         , []
       )
       .reduce(
-        (acc: Map<string, Set<string>>, x) => acc.has(x.faculty) 
-          ? acc.set(x.faculty, acc.get(x.faculty).add(x.class)) 
-          : acc.set(x.faculty, new Set([x.class]))
-        , new Map<string, Set<string>>()
+        (acc: Map<string, Map<string, number>>, x) => acc.has(x.faculty) 
+          ? acc.set(x.faculty, acc.get(x.faculty).set(x.class, acc.get(x.faculty).has(x.class)
+            ? acc.get(x.faculty).get(x.class) + 1
+            : 1)) 
+          : acc.set(x.faculty, new Map().set(x.class, 1))
+        , new Map<string, Map<string, number>>()
       )
     ;
+
+    console.log([...groupedByFaculty]);
 
     this.currentSemesterByFaculty = [...groupedByFaculty]
       .map(x => ({
         faculty: x[0]
-        , classes: [...x[1]].sort()
+        , classes: [...x[1]].map(y => ({ class: y[0], numberOfSections: y[1]})).sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
       }))
       .sort((a, b) => a.faculty == b.faculty ? 0 : a.faculty < b.faculty ? -1 : 1)
     ;

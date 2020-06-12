@@ -65,7 +65,10 @@
           <p
             *ngFor='let c of f.classes'
           >
-            {{ c }}
+            {{ c.class }} 
+            <span
+              *ngIf='c.numberOfSections > 1'
+            >&nbsp;({{ c.numberOfSections }} sections)</span>
           </p>
         </mat-card-content>
       </mat-card>
