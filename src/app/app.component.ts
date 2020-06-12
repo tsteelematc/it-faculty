@@ -97,21 +97,11 @@ export class AppComponent {
 
     console.log(JSON.stringify(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)));
     
-
-    // Setup the two maps being used to show the data to the user.
-    const groupedByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
-      .reduce(
-        (acc, x) => acc.has(x.class) 
-          ? acc.set(x.class, acc.get(x.class).set(x.faculty)) 
-          : acc.set(x.class, new Set([...x.faculty]))
-        , new Map<string, Set<string>>()
-      )
-    ;
-
-    this.currentSemesterByClass = [...groupedByClass]
+    // Data is essentially in 'by class' shape, so no reduce, just unique and sort...
+    this.currentSemesterByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
       .map(x => ({
-        class: x[0]
-        , faculty: [...x[1]].sort()
+        class: x.class
+        , faculty: new Set([...x.faculty].sort())
       }))
       .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
     ;
