@@ -120,10 +120,10 @@ export class AppComponent {
         , []
       )
       .reduce(
-        (acc, x) => acc.has(x.faculty) 
-          ? acc.set(x.faculty, [...acc.get(x.faculty), x.class]) 
-          : acc.set(x.faculty, [x.class])
-        , new Map()
+        (acc: Map<string, Set<string>>, x) => acc.has(x.faculty) 
+          ? acc.set(x.faculty, acc.get(x.faculty).add(x.class)) 
+          : acc.set(x.faculty, new Set([x.class]))
+        , new Map<string, Set<string>>()
       )
     ;
 
