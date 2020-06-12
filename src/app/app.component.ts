@@ -110,6 +110,16 @@ export class AppComponent {
 
     const groupedByFaculty = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
       .reduce(
+        (acc, x) => [
+          ...acc
+          , ...x.faculty.map(y => ({
+            class: x.class 
+            , faculty: y
+          }))
+        ]
+        , []
+      )
+      .reduce(
         (acc, x) => acc.has(x.faculty) 
           ? acc.set(x.faculty, [...acc.get(x.faculty), x.class]) 
           : acc.set(x.faculty, [x.class])
