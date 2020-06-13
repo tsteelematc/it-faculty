@@ -30,7 +30,12 @@
   </mat-card>
 
   <mat-tab-group *ngIf='currentSemesterByClass.length > 0 && currentSemesterByFaculty.length > 0 && !coursesSvc.loading' style="margin: -15px;">
-    <mat-tab label="By Course">
+    <mat-tab label="By Class">
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <p>One</p>
+        <p>Two</p>
+        <p>Three</p>
+      </div>
       <mat-card
         style="margin-top: 15px; margin-left: 15px; margin-right: 15px;"
         *ngFor='let c of currentSemesterByClass'
