@@ -396,7 +396,116 @@ export class CoursesService {
                   }
               ]
               : semester == 'Summer 2020'
-                ? []
+                ? [
+                    { 
+                        class: "Exploration of Information Technology"
+                        , faculty: [
+                            "Nina Milbauer"
+                            , "Nina Milbauer"
+                            , "Nina Milbauer"
+                        ]
+                    }
+                    , {
+                        class: "Preparation for an IT Career"
+                        , faculty: [
+                            "Kim Bethea"
+                            , "Jeffrey Close"
+                            , "Kim Bethea"
+                        ]
+                    }
+                    , {
+                        class: "Introduction to Cloud Computing"
+                        , faculty: [
+                            "Curtis Chambers"
+                        ]
+                    }
+                    , {
+                        class: "Introduction to Databases"
+                        , faculty: [
+                            "Kenneth McCullough"
+                        ]
+                    }
+                    , {
+                        class: "SQL Database Programming"
+                        , faculty: [
+                            "Thomas Steele"
+                        ]
+                    }
+                    , {
+                        class: "Firewall/VPN Technologies"
+                        , faculty: [
+                            "Damian Roth"
+                        ]
+                    }
+                    , {
+                        class: "Python Programming"
+                        , faculty: [
+                            "Victor Johnson"
+                        ]
+                    }
+                    , {
+                        class: "Java Programming"
+                        , faculty: [
+                            "Paula Waite"
+                        ]
+                    }
+                    , {
+                        class: "Introduction to Programming with JavaScript"
+                        , faculty: [
+                            "Lori Rodas"
+                        ]
+                    }
+                    , {
+                        class: "Website Development"
+                        , faculty: [
+                            "Temple Sutfin"
+                        ]
+                    }
+                    , {
+                        class: "Advanced CSS"
+                        , faculty: [
+                            "Lori Rodas"
+                        ]
+                    }
+                    , {
+                        class: "Advanced Javascript"
+                        , faculty: [
+                            "Bryan Witkowski"
+                        ]
+                    }
+                    , {
+                        class: "IT Security Awareness"
+                        , faculty: [
+                            "Aaron Gallus"
+                            , "Aaron Gallus"
+                            , "Aaron Gallus"
+                        ]
+                    }
+                    , {
+                        class: "Linux Server 2 (Security)"
+                        , faculty: [
+                            "Michael Masino"
+                        ]
+                    }
+                    , {
+                        class: "Windows Server 1"
+                        , faculty: [
+                            "Dale Jaedike"
+                        ]
+                    }
+                    , {
+                        class: "Enterprise Client"
+                        , faculty: [
+                            "Lana Larsen McCarthy"
+                        ]
+                    }
+                    , {
+                        class: "Linux Server 1"
+                        , faculty: [
+                            "Angela Snelling"
+                        ]
+                    }
+                ]
                 : []
             )
           }
