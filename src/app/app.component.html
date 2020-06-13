@@ -38,8 +38,10 @@
         fxLayoutAlign.lt-md="space-between"
         fxLayout="row layout-wrap"
         fxLayoutAlign="space-evenly"
+        fxLayoutGap="15px"
       >
         <mat-card
+          fxFlexFill.lt-md
           *ngFor='let c of currentSemesterByClass'
         >
           <mat-card-header>
