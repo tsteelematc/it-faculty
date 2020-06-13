@@ -31,7 +31,11 @@
 
   <mat-tab-group *ngIf='currentSemesterByClass.length > 0 && currentSemesterByFaculty.length > 0 && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab label="By Class">
-      <div fxLayout="row" fxLayoutAlign="space-between">
+      <div 
+        fxLayout="row" 
+        fxLayout.sm="column"
+        fxLayoutAlign="space-between"
+      >
         <p>One</p>
         <p>Two</p>
         <p>Three</p>
