@@ -1,5 +1,8 @@
 <mat-toolbar color='primary'>
-  <mat-toolbar-row>
+  <mat-toolbar-row 
+    fxHide
+    fxShow.lt-md
+  >
     <small style='flex: 1 1 auto; text-align: center;'>
       Madison College IT Classes
     </small>
@@ -9,6 +12,14 @@
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
     <span style='flex: 1 1 auto;'></span>
+    <span
+      fxShow
+      fxHide.lt-md
+      style="opacity: 50%"
+    >
+      Madison College IT Classes
+      &nbsp;
+    </span>
     {{ displaySemester }} {{ displayYear }}
     <span style='flex: 1 1 auto;'></span>
     <button mat-mini-fab color='primary' (click)='nextSemester()'>
