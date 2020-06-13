@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1592080733783,
+  "timestamp": 1592081176438,
   "index": "https://tsteelematc.github.io/it-faculty/index.html",
   "assetGroups": [
     {
@@ -40,14 +40,14 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-128x128.png": "87f54e4f927fd6b4c03634899cc1ccf7caddbdfb",
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-144x144.png": "1a27886b46b1e99149c2be8b14a7581930269df1",
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-152x152.png": "d1daba5893ae45ede48aa5b446c634ae6b9fa45a",
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-192x192.png": "6954c46af475026759d431be3b40a7a6f964cd67",
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-384x384.png": "4ae66997c78ed86071a8f9cfed57069f8240e3c2",
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-512x512.png": "5dab4b2a051a495d8f84554f7ce8744d17bd6d54",
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-72x72.png": "251ce461b35d020af576a75fefdf3491633f5a68",
-    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-96x96.png": "c1d17e3fc6759b4a0fe6d4e6e485c9de708d0e81",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-128x128.png": "b789a7267d07f4c0b55b4f6a441ae4e319d14353",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-144x144.png": "da094cce86b8ce9ed05d2efd7fbb556a1de21eed",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-152x152.png": "7911c19ba69bc41d47b9e2943bc3101aedad58a6",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-192x192.png": "419ffe14f1dd5df0d8664e4dd1f2d342a7499804",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-384x384.png": "172e642e0389aee4f74877892e331633024f918c",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-512x512.png": "76b98e8aec5eedb172cce80881d9554cd3065256",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-72x72.png": "2169c23480f779ddc95053c96bfc9aea033257b1",
+    "https://tsteelematc.github.io/it-faculty/assets/icons/icon-96x96.png": "d4b5b1167b54c2fe864c2dd3f66a5fa6361da574",
     "https://tsteelematc.github.io/it-faculty/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "https://tsteelematc.github.io/it-faculty/index.html": "ec7ee1bfe7637aa3e14d5d793d07ea1b3e5f484e",
     "https://tsteelematc.github.io/it-faculty/main-es2015.60d553fa6af1e56a0be9.js": "02b8e2af26365ea3a5a62fa99fb6d876acd8a73e",
