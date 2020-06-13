@@ -8,7 +8,13 @@
     </small>
   </mat-toolbar-row>
   <mat-toolbar-row>
-    <button mat-mini-fab color='primary' (click)='previousSemester()'>
+    <button 
+      mat-mini-fab 
+      color='primary' 
+      (click)='previousSemester()'
+      fxHide
+      fxShow.lt-md
+    >
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
     <span style='flex: 1 1 auto;'></span>
@@ -21,8 +27,36 @@
       &nbsp;
     </span>
     {{ displaySemester }} {{ displayYear }}
+    <span
+      fxShow
+      fxHide.lt-md
+    >
+      &nbsp;
+      &nbsp;
+      <button 
+        mat-mini-fab 
+        color='primary' 
+        (click)='previousSemester()'
+      >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      &nbsp;
+      <button 
+        mat-mini-fab 
+        color='primary' 
+        (click)='nextSemester()'
+      >
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </span>
     <span style='flex: 1 1 auto;'></span>
-    <button mat-mini-fab color='primary' (click)='nextSemester()'>
+    <button 
+      mat-mini-fab 
+      color='primary' 
+      (click)='nextSemester()'
+      fxHide
+      fxShow.lt-md
+    >
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
   </mat-toolbar-row>
