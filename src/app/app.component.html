@@ -34,15 +34,11 @@
       label="By Class"
     >
       <div 
-        fxLayout.lt-md="column" 
-        fxLayoutAlign.lt-md="space-evenly"
-        fxLayoutGap.lt-md="15px"
-        gdAuto.md.gt-md="row"
-        gdColumns.md.gt-md="50% 50%"
-        gdGap.md.gt-mad="15px 15px"
+        gdColumns.lt-md="100%"
+        gdColumns="50% 50%"
+        gdGap="10px"
       >
         <mat-card
-          fxFlexFill.lt-md
           *ngFor='let c of currentSemesterByClass'
         >
           <mat-card-header>
@@ -62,27 +58,33 @@
       </div>
     </mat-tab>
     <mat-tab label="By Faculty">
-      <mat-card
-        style="margin-top: 15px; margin-left: 15px; margin-right: 15px;"
-        *ngFor='let f of currentSemesterByFaculty'
+      <div 
+        gdColumns.lt-md="100%"
+        gdColumns="50% 50%"
+        gdGap="10px"
       >
-        <mat-card-header>
-          <mat-icon matCardAvatar color='primary'>perm_identity</mat-icon>
-          <mat-card-title>
-            {{ f.faculty }}
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p
-            *ngFor='let c of f.classes'
-          >
-            {{ c.class }} 
-            <span
-              *ngIf='c.numberOfSections > 1'
-            >&nbsp;({{ c.numberOfSections }} sections)</span>
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </mat-tab>
+        <mat-card
+          *ngFor='let f of currentSemesterByFaculty'
+        >
+        
+          <mat-card-header>
+            <mat-icon matCardAvatar color='primary'>perm_identity</mat-icon>
+            <mat-card-title>
+              {{ f.faculty }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p
+              *ngFor='let c of f.classes'
+            >
+              {{ c.class }} 
+              <span
+                *ngIf='c.numberOfSections > 1'
+              >&nbsp;({{ c.numberOfSections }} sections)</span>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>  
+      </mat-tab>
   </mat-tab-group>
 </div>
