@@ -8,7 +8,9 @@ import { CoursesService } from './courses.service';
 })
 export class AppComponent {
 
-  constructor(public coursesSvc: CoursesService) {}
+  constructor(public coursesSvc: CoursesService) {
+    this.nextSemester();
+  }
 
   title = 'it-faculty';
 
@@ -18,7 +20,7 @@ export class AppComponent {
     , 'Fall'
   ];
 
-  displaySemesterIndex = 2;
+  displaySemesterIndex = 0;
 
   get displaySemester() {
     return this.semesters[this.displaySemesterIndex];
