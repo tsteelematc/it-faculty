@@ -30,34 +30,33 @@
   </mat-card>
 
   <mat-tab-group *ngIf='currentSemesterByClass.length > 0 && currentSemesterByFaculty.length > 0 && !coursesSvc.loading' style="margin: -15px;">
-    <mat-tab label="By Class">
+    <mat-tab 
+      label="By Class"
+    >
       <div 
-        fxLayout="row" 
-        fxLayout.sm="column"
+        fxLayout.lt-md="column" 
+        fxLayout="row"
         fxLayoutAlign="space-between"
       >
-        <p>One</p>
-        <p>Two</p>
-        <p>Three</p>
+        <mat-card
+          style="margin-top: 15px; margin-left: 15px; margin-right: 15px;"
+          *ngFor='let c of currentSemesterByClass'
+        >
+          <mat-card-header>
+            <mat-icon matCardAvatar color='primary'>crop_16_9</mat-icon>
+            <mat-card-title>
+              {{ c.class }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p
+              *ngFor='let f of c.faculty'
+            >
+              {{ f }}
+            </p>
+          </mat-card-content>
+        </mat-card>
       </div>
-      <mat-card
-        style="margin-top: 15px; margin-left: 15px; margin-right: 15px;"
-        *ngFor='let c of currentSemesterByClass'
-      >
-        <mat-card-header>
-          <mat-icon matCardAvatar color='primary'>crop_16_9</mat-icon>
-          <mat-card-title>
-            {{ c.class }}
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p
-            *ngFor='let f of c.faculty'
-          >
-            {{ f }}
-          </p>
-        </mat-card-content>
-      </mat-card>
     </mat-tab>
     <mat-tab label="By Faculty">
       <mat-card
