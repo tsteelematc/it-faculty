@@ -76,7 +76,7 @@
 
   <mat-tab-group *ngIf='currentSemesterByClass.length > 0 && currentSemesterByFaculty.length > 0 && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab 
-      label="By Class"
+      label="By Class ({{ currentSemesterByClass.length }})"
     >
       <div 
         gdColumns.lt-md="100%"
@@ -102,7 +102,9 @@
         </mat-card>
       </div>
     </mat-tab>
-    <mat-tab label="By Faculty">
+    <mat-tab 
+      label="By Faculty ({{ currentSemesterByFaculty.length }})"
+    >
       <div 
         gdColumns.lt-md="100%"
         gdColumns="50% 50%"
