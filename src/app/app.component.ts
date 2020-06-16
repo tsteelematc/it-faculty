@@ -32,7 +32,7 @@ export class AppComponent {
   currentSemesterByClass = [];
   currentSemesterByFaculty = [];
 
-  async previousSemester() {
+  previousSemester() {
       // First check semester to see if we have to switch the year.
       if (this.displaySemester == 'Spring') {
         this.displaySemesterIndex = 2;
@@ -42,31 +42,34 @@ export class AppComponent {
         this.displaySemesterIndex--
       }
 
-      // Once we have the proper semester and year setup, load the data if needed.
-      try {
+      this.loadAndInitializeTab();
+  }
 
-        if (!this.loadedSemesters.has(`${this.displaySemester} ${this.displayYear}`)) {
-          // Make sure after the async call, that we set the proper data...
-          // Without these constants, a user could press the buttons many times and 
-          // get data updated for the currently displayed semester, but that was
-          // not the semester that had been fetched ! ! !
-          const fetchingDataForSemester = this.displaySemester;
-          const fetchingDataForYear = this.displayYear;
+  private async loadAndInitializeTab() {
+    // Make sure after the async call, that we set the proper data...
+    // Without these constants, a user could press the buttons many times and 
+    // get data updated for the currently displayed semester, but that was
+    // not the semester that had been fetched ! ! !
+    const fetchingDataForSemester = this.displaySemester;
+    const fetchingDataForYear = this.displayYear;
 
-          const loadedSemester = await this.coursesSvc.loadCourses(`${fetchingDataForSemester} ${fetchingDataForYear}`);
-          //console.log(loadedSemester);
-          this.loadedSemesters.set(`${fetchingDataForSemester} ${fetchingDataForYear}`, loadedSemester)
-          //console.log(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`));
-        }
+    // Once we have the proper semester and year setup, load the data if needed.
+    try {
+
+      if (!this.loadedSemesters.has(`${fetchingDataForSemester} ${fetchingDataForYear}`)) {
+
+        const loadedSemester = await this.coursesSvc.loadCourses(`${fetchingDataForSemester} ${fetchingDataForYear}`);
+        //console.log(loadedSemester);
+        this.loadedSemesters.set(`${fetchingDataForSemester} ${fetchingDataForYear}`, loadedSemester);
+        //console.log(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`));
       }
-
-      catch (err) {
-        console.error(err);
-      }
-
-      finally {
-        this.initTabs();
-      }
+    }
+    catch (err) {
+      console.error(err);
+    }
+    finally {
+      this.initTabs();
+    }
   }
 
   async nextSemester() {
@@ -78,27 +81,7 @@ export class AppComponent {
       else {
         this.displaySemesterIndex++
       }
-
-      // Once we have the proper semester and year setup, load the data if needed.
-      try {
-
-        if (!this.loadedSemesters.has(`${this.displaySemester} ${this.displayYear}`)) {
-          this.coursesSvc.testCallApiGateway();
-          const loadedSemester = await this.coursesSvc.loadCourses(`${this.displaySemester} ${this.displayYear}`);
-          //console.log(loadedSemester);
-          //console.log(JSON.stringify(loadedSemester));
-          this.loadedSemesters.set(`${this.displaySemester} ${this.displayYear}`, loadedSemester)
-          //console.log(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`));
-        }
-      }
-
-      catch (err) {
-        console.error(err);
-      }
-
-      finally {
-        this.initTabs();
-      }
+      this.loadAndInitializeTab();
   }
 
   initTabs() {
