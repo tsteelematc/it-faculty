@@ -47,7 +47,19 @@ export class CoursesService {
                           , "Victor Johnson"
                       ]
                   }
-                  , { 
+                  , {
+                      class: "Big Data Fundamentals"
+                      , faculty: [
+                          "Cary Walker"
+                      ]
+                  }
+                  , {
+                    class: "Advanced Big Data Topics"
+                    , faculty: [
+                        "Cary Walker"
+                    ]
+                }
+                , { 
                       class: "Preparation for an IT Career"
                       , faculty: [
                           "Angela Snelling"
