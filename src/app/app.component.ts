@@ -53,7 +53,7 @@ export class AppComponent {
           const fetchingDataForSemester = this.displaySemester;
           const fetchingDataForYear = this.displayYear;
 
-          const loadedSemester = await this.coursesSvc.loadCourses(`${this.displaySemester} ${this.displayYear}`);
+          const loadedSemester = await this.coursesSvc.loadCourses(`${fetchingDataForSemester} ${fetchingDataForYear}`);
           //console.log(loadedSemester);
           this.loadedSemesters.set(`${fetchingDataForSemester} ${fetchingDataForYear}`, loadedSemester)
           //console.log(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`));
