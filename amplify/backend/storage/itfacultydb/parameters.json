@@ -1,7 +1,0 @@
-{
-    "tableName": "semesters",
-    "partitionKeyName": "semster",
-    "partitionKeyType": "S",
-    "sortKeyName": "classes",
-    "sortKeyType": "B"
-}

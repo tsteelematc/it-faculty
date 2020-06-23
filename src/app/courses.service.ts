@@ -10,8 +10,9 @@ export class CoursesService {
 
   testCallApiGateway() {
     this.httpSvc
-      .get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/semester:Summer%202020')
+      //.get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/semester:Summer%202020')
       //.get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/Foo')
+      .get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/Bar')
       .subscribe(
         data => {
           console.log(data);
