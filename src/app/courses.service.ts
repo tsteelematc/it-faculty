@@ -8,22 +8,33 @@ export class CoursesService {
 
   constructor(private httpSvc: HttpClient ) { }
 
-  testCallApiGateway() {
-    this.httpSvc
-      //.get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/semester:Summer%202020')
-      //.get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/Foo')
-      .get('https://bjs0nlo9wb.execute-api.us-east-2.amazonaws.com/dev/semester/Bar')
-      .subscribe(
-        data => {
-          console.log(data);
-          console.log(typeof(data[0].classes));
+  loadCourses(semester: string): Promise<any> {
+    this.loading = true;
+
+    return new Promise<any>(
+        (resolve, reject) => {
+            this.httpSvc
+            .get(`https://dhzxkhfhuf.execute-api.us-east-2.amazonaws.com/dev/semester/semester:${semester}`)
+            .subscribe(
+              data => {
+                  this.loading = false;
+                  console.log(data);
+                  //console.log(typeof(data[0].classes));
+                  //console.log(JSON.parse(data[0].classes));
+                  resolve((data as any).length > 0 ? JSON.parse(data[0].classes) : []);
+              }
+              , err => {
+                  this.loading = false;
+                  console.error(err)
+                  resolve([]);
+              }
+            )
+          ;
         }
-        , err => console.error(err)
-      )
-    ;
+    )
   }
 
-  loadCourses(semester: string) {
+  loadCoursesMock(semester: string) {
     return new Promise<any>(
       (resolve, reject) => {
         this.loading = true;

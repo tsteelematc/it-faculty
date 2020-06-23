@@ -9,7 +9,7 @@ import { CoursesService } from './courses.service';
 export class AppComponent {
 
   constructor(public coursesSvc: CoursesService) {
-    this.coursesSvc.testCallApiGateway();
+    //this.coursesSvc.testCallApiGateway();
     this.nextSemester();
   }
 
