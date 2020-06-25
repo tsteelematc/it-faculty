@@ -22,7 +22,7 @@ export class AppComponent {
       'Refresh to clear & reload data'
       , 'Refresh'
       , {
-        duration: 3000,
+        duration: 3500,
       }
     );
 
