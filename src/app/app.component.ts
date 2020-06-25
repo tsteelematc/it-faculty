@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CoursesService } from './courses.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,28 @@ import { CoursesService } from './courses.service';
 })
 export class AppComponent {
 
-  constructor(public coursesSvc: CoursesService) {
+  constructor(
+    public coursesSvc: CoursesService
+    , private snackBar: MatSnackBar
+  ) {
     //this.coursesSvc.testCallApiGateway();
     this.nextSemester();
+  }
+
+  refresh() {
+    const sb = this.snackBar.open(
+      'Refresh to clear & reload data'
+      , 'Refresh'
+      , {
+        duration: 3000,
+      }
+    );
+
+    sb.onAction().subscribe(() => {
+      //console.log("Pressed refresh...");
+      this.loadedSemesters.clear();
+      this.loadAndInitializeTab();
+    });
   }
 
   title = 'it-faculty';
