@@ -14,6 +14,12 @@ export class AppComponent {
     , private snackBar: MatSnackBar
   ) {
     //this.coursesSvc.testCallApiGateway();
+    this.coursesSvc.writeItem({ 
+      semester: "Foo22"
+      , classes: "Bar"
+      , wtf: "Dog"
+    });
+
     this.nextSemester();
   }
 
