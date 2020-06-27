@@ -2,7 +2,7 @@
     "paths": [
         {
             "name": "/semester",
-            "lambdaFunction": "itfacultylambda",
+            "lambdaFunction": "itfacultylambdaresource",
             "privacy": {
                 "open": true
             }
@@ -12,19 +12,19 @@
     "apiName": "itfacultyapi",
     "functionArns": [
         {
-            "lambdaFunction": "itfacultylambda"
+            "lambdaFunction": "itfacultylambdaresource"
         }
     ],
     "privacy": {
         "auth": 0,
         "unauth": 0,
-        "authRoleName": "amplify-itfaculty-dev-173910-authRole",
-        "unAuthRoleName": "amplify-itfaculty-dev-173910-unauthRole"
+        "authRoleName": "amplify-itfaculty-dev-82755-authRole",
+        "unAuthRoleName": "amplify-itfaculty-dev-82755-unauthRole"
     },
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "itfacultylambda",
+            "resourceName": "itfacultylambdaresource",
             "attributes": [
                 "Name",
                 "Arn"

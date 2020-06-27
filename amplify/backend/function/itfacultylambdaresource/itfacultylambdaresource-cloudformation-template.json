@@ -75,8 +75,8 @@
 				"Runtime": "nodejs12.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-itfaculty-dev-173910-deployment",
-					"S3Key": "amplify-builds/itfacultylambda-73776c7651706f6d6f55-build.zip"
+					"S3Bucket": "amplify-itfaculty-dev-82755-deployment",
+					"S3Key": "amplify-builds/itfacultylambdaresource-665431307837526b7635-build.zip"
 				}
 			}
 		},
@@ -86,12 +86,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"itfacultyLambdaRolea9ec2fc9",
+						"itfacultyLambdaRole90add847",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"itfacultyLambdaRolea9ec2fc9",
+									"itfacultyLambdaRole90add847",
 									"-",
 									{
 										"Ref": "env"

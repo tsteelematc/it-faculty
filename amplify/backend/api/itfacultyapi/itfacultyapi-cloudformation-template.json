@@ -14,15 +14,15 @@
         },
     
     
-          "functionitfacultylambdaName": {
+          "functionitfacultylambdaresourceName": {
             "Type": "String",
-            "Default": "functionitfacultylambdaName"
+            "Default": "functionitfacultylambdaresourceName"
           },
         
           
-          "functionitfacultylambdaArn": {
+          "functionitfacultylambdaresourceArn": {
             "Type": "String",
-            "Default": "functionitfacultylambdaArn"
+            "Default": "functionitfacultylambdaresourceArn"
           }
         
           
@@ -176,7 +176,7 @@
                             
                             {
                                 
-                                "Ref": "functionitfacultylambdaArn"
+                                "Ref": "functionitfacultylambdaresourceArn"
                             },
                             
                             "/invocations"
@@ -275,7 +275,7 @@
                           
                           {
                             
-                            "Ref": "functionitfacultylambdaArn"
+                            "Ref": "functionitfacultylambdaresourceArn"
                           },
                           
                           "/invocations"
@@ -332,12 +332,12 @@
                   
         
         
-        "functionitfacultylambdaPermissionitfacultyapi": {
+        "functionitfacultylambdaresourcePermissionitfacultyapi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functionitfacultylambdaName"
+                        "Ref":  "functionitfacultylambdaresourceName"
                     },
                     
                     "Action": "lambda:InvokeFunction",

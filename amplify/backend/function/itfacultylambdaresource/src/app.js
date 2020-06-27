@@ -17,16 +17,16 @@ AWS.config.update({ region: process.env.TABLE_REGION });
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-let tableName = "semesters";
+let tableName = "itfacultydata";
 if(process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
-const partitionKeyName = "semester";
+const partitionKeyName = "partition-key";
 const partitionKeyType = "S";
-const sortKeyName = "classes";
-const sortKeyType = "S";
+const sortKeyName = "";
+const sortKeyType = "";
 const hasSortKey = sortKeyName !== "";
 const path = "/semester";
 const UNAUTH = 'UNAUTH';
@@ -177,7 +177,7 @@ app.post(path, function(req, res) {
   dynamodb.put(putItemParams, (err, data) => {
     if(err) {
       res.statusCode = 500;
-      res.json({error: err, url: req.url, body: req.body, tom:'was here'});
+      res.json({error: err, url: req.url, body: req.body});
     } else{
       res.json({success: 'post call succeed!', url: req.url, data: data})
     }
