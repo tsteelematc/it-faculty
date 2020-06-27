@@ -14,10 +14,10 @@ export class AppComponent {
     , private snackBar: MatSnackBar
   ) {
     //this.coursesSvc.testCallApiGateway();
+
     this.coursesSvc.writeItem({ 
-      semester: "Tom Steele"
-      , classes: "Bar"
-      , wtf: "Dog"
+      "partion-key": "Tom"
+      , "foo": "Bar"
     });
 
     this.nextSemester();

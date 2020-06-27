@@ -9,7 +9,7 @@ export class CoursesService {
   constructor(private httpSvc: HttpClient ) { }
 
   writeItem(item) {
-    this.httpSvc.post('https://dhzxkhfhuf.execute-api.us-east-2.amazonaws.com/dev/semester', item).subscribe(
+    this.httpSvc.post('https://r3rxcwycwb.execute-api.us-east-2.amazonaws.com/dev/semester', item).subscribe(
         data => console.log(data)
         , err => console.error(err)
     );
@@ -21,14 +21,15 @@ export class CoursesService {
     return new Promise<any>(
         (resolve, reject) => {
             this.httpSvc
-            .get(`https://dhzxkhfhuf.execute-api.us-east-2.amazonaws.com/dev/semester/semester:${semester}`)
+            .get(`https://r3rxcwycwb.execute-api.us-east-2.amazonaws.com/dev/semester/semester:${semester}`)
             .subscribe(
               data => {
                   this.loading = false;
                   console.log(data);
                   //console.log(typeof(data[0].classes));
                   //console.log(JSON.parse(data[0].classes));
-                  resolve((data as any).length > 0 ? JSON.parse(data[0].classes) : []);
+                  resolve([]);
+                  //resolve((data as any).length > 0 ? JSON.parse(data[0].classes) : []);
               }
               , err => {
                   this.loading = false;
