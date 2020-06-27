@@ -28,8 +28,8 @@ export class CoursesService {
                   console.log(data);
                   //console.log(typeof(data[0].classes));
                   //console.log(JSON.parse(data[0].classes));
-                  resolve([]);
-                  //resolve((data as any).length > 0 ? JSON.parse(data[0].classes) : []);
+                  //resolve([]);
+                  resolve(data[0] ? [...data[0].data] : []);
               }
               , err => {
                   this.loading = false;
