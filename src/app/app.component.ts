@@ -15,10 +15,10 @@ export class AppComponent {
   ) {
     //this.coursesSvc.testCallApiGateway();
 
-    this.coursesSvc.writeItem({ 
-      key: "Tom"
-      , foo: "Bar"
-    });
+    // this.coursesSvc.writeItem({ 
+    //   key: "Tom"
+    //   , foo: "Bar"
+    // });
 
     this.nextSemester();
   }
