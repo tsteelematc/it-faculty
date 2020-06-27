@@ -113,13 +113,13 @@ export class AppComponent {
 
   initTabs() {
 
-    console.log(JSON.stringify(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)));
+    //console.log(JSON.stringify(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)));
     
     // Data is essentially in 'by class' shape, so no reduce, just unique and sort...
     this.currentSemesterByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
       .map(x => ({
         class: x.class
-        , faculty: new Set([...x.faculty].sort())
+        , faculty: new Set([...x.faculty].sort().map((x, i, arr) => `${x} ${arr.filter(y => y === x).length > 1 ? '(' + arr.filter(y => y === x).length + ' sections)' : ''}`))
       }))
       .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
     ;
@@ -147,7 +147,7 @@ export class AppComponent {
       )
     ;
 
-    console.log([...groupedByFaculty]);
+    //console.log([...groupedByFaculty]);
 
     this.currentSemesterByFaculty = [...groupedByFaculty]
       .map(x => ({

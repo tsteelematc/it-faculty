@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1593269672024,
+  "timestamp": 1593273088925,
   "index": "https://tsteelematc.github.io/it-faculty/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "https://tsteelematc.github.io/it-faculty/favicon.ico",
         "https://tsteelematc.github.io/it-faculty/index.html",
-        "https://tsteelematc.github.io/it-faculty/main-es2015.43d6c76465dea6b56e0d.js",
-        "https://tsteelematc.github.io/it-faculty/main-es5.43d6c76465dea6b56e0d.js",
+        "https://tsteelematc.github.io/it-faculty/main-es2015.f9679fbfe78bc1a032ee.js",
+        "https://tsteelematc.github.io/it-faculty/main-es5.f9679fbfe78bc1a032ee.js",
         "https://tsteelematc.github.io/it-faculty/manifest.webmanifest",
         "https://tsteelematc.github.io/it-faculty/polyfills-es2015.690002c25ea8557bb4b0.js",
         "https://tsteelematc.github.io/it-faculty/polyfills-es5.9e286f6d9247438cbb02.js",
@@ -49,9 +49,9 @@
     "https://tsteelematc.github.io/it-faculty/assets/icons/icon-72x72.png": "a7b594425489745c77fbc1babb8289eda2e6728c",
     "https://tsteelematc.github.io/it-faculty/assets/icons/icon-96x96.png": "e3e6b6cc47e33fade6583827f464d99c805fd358",
     "https://tsteelematc.github.io/it-faculty/favicon.ico": "136fd23e5c0d5c792ac1a7ec7e87ba19b37f2d43",
-    "https://tsteelematc.github.io/it-faculty/index.html": "d7565b3abcb3d0ff7b8fe1721eb4f4fa9846292c",
-    "https://tsteelematc.github.io/it-faculty/main-es2015.43d6c76465dea6b56e0d.js": "ae1a302e38787dc7632a3cf7f481c60d48b6db6c",
-    "https://tsteelematc.github.io/it-faculty/main-es5.43d6c76465dea6b56e0d.js": "cab3ced8d3ea55a06cc3828477f11c6563fd04b9",
+    "https://tsteelematc.github.io/it-faculty/index.html": "7a17eccd64cec31bc064ced9966b98610669e54b",
+    "https://tsteelematc.github.io/it-faculty/main-es2015.f9679fbfe78bc1a032ee.js": "6be80a4590f70b83a203af8cc32847895bdd54a8",
+    "https://tsteelematc.github.io/it-faculty/main-es5.f9679fbfe78bc1a032ee.js": "f9e91b3ca574487bf535b3a01c0fdb845114734c",
     "https://tsteelematc.github.io/it-faculty/manifest.webmanifest": "cd66cbcf43b4a10da2e868e38d0c3c4b51c14d0b",
     "https://tsteelematc.github.io/it-faculty/polyfills-es2015.690002c25ea8557bb4b0.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "https://tsteelematc.github.io/it-faculty/polyfills-es5.9e286f6d9247438cbb02.js": "8aa26ea87b9958c6bd13b7c257c0e9940438e684",
