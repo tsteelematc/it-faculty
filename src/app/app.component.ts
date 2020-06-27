@@ -15,7 +15,7 @@ export class AppComponent {
   ) {
     //this.coursesSvc.testCallApiGateway();
     this.coursesSvc.writeItem({ 
-      semester: "Foo22"
+      semester: "Tom Steele"
       , classes: "Bar"
       , wtf: "Dog"
     });
