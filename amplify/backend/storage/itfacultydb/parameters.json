@@ -1,5 +1,5 @@
 {
     "tableName": "itfacultydata",
-    "partitionKeyName": "partition-key",
+    "partitionKeyName": "key",
     "partitionKeyType": "S"
 }

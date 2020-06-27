@@ -16,8 +16,8 @@ export class AppComponent {
     //this.coursesSvc.testCallApiGateway();
 
     this.coursesSvc.writeItem({ 
-      "partion-key": "Tom"
-      , "foo": "Bar"
+      key: "Tom"
+      , foo: "Bar"
     });
 
     this.nextSemester();

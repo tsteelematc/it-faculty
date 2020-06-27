@@ -33,7 +33,7 @@
                 "AttributeDefinitions": [
                   
                   {
-                      "AttributeName": "partition-key",
+                      "AttributeName": "key",
                       "AttributeType": "S"
                   } 
                   
@@ -41,7 +41,7 @@
                 "KeySchema": [
                   
                   {
-                    "AttributeName": "partition-key",
+                    "AttributeName": "key",
                     "KeyType": "HASH"
                   } 
                   
