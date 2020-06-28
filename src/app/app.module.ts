@@ -15,10 +15,12 @@ import { environment } from '../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
+import { FauxRoutedRootComponent } from './faux-routed-root.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FauxRoutedRootComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,6 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [FauxRoutedRootComponent]
 })
 export class AppModule { }
