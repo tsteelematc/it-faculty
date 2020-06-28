@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoursesService } from './courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(
     public coursesSvc: CoursesService
     , private snackBar: MatSnackBar
+    , private activatedRoute: ActivatedRoute
   ) {
     //this.coursesSvc.testCallApiGateway();
 
@@ -21,6 +23,11 @@ export class AppComponent {
     // });
 
     this.nextSemester();
+  }
+
+  ngOnInit() {
+    console.log(this.activatedRoute.snapshot.paramMap.get('semester'));
+    console.log(this.activatedRoute);
   }
 
   refresh() {
