@@ -5,13 +5,19 @@
   >
     <small style='flex: 1 1 auto; text-align: center;'>
       Madison College IT Classes
-    </small>
-    <!-- <button 
-      mat-icon-button 
-      (click)='refresh()'
-    >
-      <mat-icon>refresh</mat-icon>
-    </button> -->
+      <button 
+        mat-icon-button 
+        (click)='refresh()'
+        style='opacity: 0.5;'
+      >
+        <mat-icon
+          style='font-size: 1.25em; margin-left: -20px; margin-bottom: 3px;'
+        >
+          refresh
+        </mat-icon>
+      </button>
+  </small>
+
   </mat-toolbar-row>
   <mat-toolbar-row>
     <button 
@@ -56,14 +62,15 @@
       </button>
     </span>
     <span style='flex: 1 1 auto;'></span>
-    <!-- <button 
+    <button 
       mat-icon-button 
       (click)='refresh()'
+      style='opacity: 0.5;'
       fxShow
       fxHide.lt-md
     >
       <mat-icon>refresh</mat-icon>
-    </button> -->
+    </button>
     <button 
       mat-mini-fab 
       color='primary' 
