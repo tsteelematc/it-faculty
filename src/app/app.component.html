@@ -2,22 +2,35 @@
   <mat-toolbar-row 
     fxHide
     fxShow.lt-md
-  >
-    <small style='flex: 1 1 auto; text-align: center;'>
-      Madison College IT Classes
-      <button 
-        mat-icon-button 
-        (click)='refresh()'
-        style='opacity: 0.5;'
-      >
-        <mat-icon
-          style='font-size: 1.25em; margin-left: -20px; margin-bottom: 3px;'
-        >
-          refresh
-        </mat-icon>
-      </button>
-  </small>
 
+  >
+  <!-- Button, not visible, but for proper centering : - ( -->
+  <button 
+    mat-icon-button
+    disabled 
+    style='opacity: 0.5;'
+    >
+      <mat-icon
+        style='font-size: 1.25em; margin-bottom: 3px;'
+      >
+      </mat-icon>
+  </button>
+  <span style='flex: 1 1 auto;'></span>
+  <small>
+      Madison College IT Classes
+  </small>
+  <span style='flex: 1 1 auto;'></span>
+  <button 
+    mat-icon-button 
+    (click)='refresh()'
+    style='opacity: 0.5;'
+  >
+    <mat-icon
+      style='font-size: 1.25em; margin-bottom: 3px;'
+    >
+      refresh
+    </mat-icon>
+  </button>
   </mat-toolbar-row>
   <mat-toolbar-row>
     <button 
