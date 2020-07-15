@@ -10,6 +10,17 @@
             "StackName": "amplify-itfaculty-dev-92832",
             "StackId": "arn:aws:cloudformation:us-east-2:471387403995:stack/amplify-itfaculty-dev-92832/7bc9e670-b882-11ea-a5cd-021e2396e2cc",
             "AmplifyAppId": "df1fbjyex7tzi"
+        },
+        "categories": {
+            "auth": {
+                "itfacultyaa8c715b": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "df1fbjyex7tzi",
+                    "type": "manual"
+                }
+            }
         }
     }
 }
