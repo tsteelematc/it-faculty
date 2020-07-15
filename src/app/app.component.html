@@ -141,6 +141,10 @@
               *ngFor='let f of c.faculty'
             >
               {{ f }}
+              &nbsp;
+              <mat-checkbox>
+                Me
+              </mat-checkbox>
             </p>
           </mat-card-content>
         </mat-card>
@@ -172,6 +176,10 @@
               <span
                 *ngIf='c.numberOfSections > 1'
               >&nbsp;({{ c.numberOfSections }} sections)</span>
+              &nbsp;
+              <mat-checkbox>
+                Me
+              </mat-checkbox>
             </p>
           </mat-card-content>
         </mat-card>
