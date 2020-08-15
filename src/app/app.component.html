@@ -138,17 +138,16 @@
           </mat-card-header>
           <mat-card-content>
             <p
+              gdColumns="90% 10%"
               *ngFor='let f of c.faculty'
+              style='background-color: whitesmoke; padding: 5px; border-radius: 5px;'
             >
               {{ f }}
-              &nbsp;
-              -
-              &nbsp;
               <mat-checkbox>
                 Me
               </mat-checkbox>
             </p>
-          </mat-card-content>
+      </mat-card-content>
         </mat-card>
       </div>
     </mat-tab>
@@ -173,14 +172,18 @@
           <mat-card-content>
             <p
               *ngFor='let c of f.classes'
+              gdColumns="90% 10%"
+              style='background-color: whitesmoke; padding: 5px; border-radius: 5px;'
             >
-              {{ c.class }} 
-              <span
-                *ngIf='c.numberOfSections > 1'
-              >&nbsp;({{ c.numberOfSections }} sections)</span>
-              &nbsp;
-              -
-              &nbsp;
+              <span>
+                {{ c.class }} 
+                <span
+                  *ngIf='c.numberOfSections > 1'
+                >
+                  &nbsp;
+                  ({{ c.numberOfSections }} sections)
+                </span>
+              </span>
               <mat-checkbox>
                 Me
               </mat-checkbox>
