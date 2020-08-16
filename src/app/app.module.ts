@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     FlexLayoutModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -120,7 +120,7 @@
 
   <mat-tab-group *ngIf='currentSemesterByClass.length > 0 && currentSemesterByFaculty.length > 0 && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab 
-      label="By Class ({{ currentSemesterByClass.length }})"
+      label="Class ({{ currentSemesterByClass.length }})"
     >
       <div 
         gdColumns.lt-md="100%"
@@ -137,22 +137,19 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <p
-              gdColumns="90% 10%"
-              *ngFor='let f of c.faculty'
-              style='background-color: whitesmoke; padding: 5px; border-radius: 5px;'
-            >
-              {{ f }}
-              <mat-checkbox>
-                Me
-              </mat-checkbox>
-            </p>
-      </mat-card-content>
+            <mat-selection-list>
+              <mat-list-option
+                *ngFor='let f of c.faculty'
+              >
+                {{ f }}
+              </mat-list-option>         
+            </mat-selection-list>
+          </mat-card-content>
         </mat-card>
       </div>
     </mat-tab>
     <mat-tab 
-      label="By Faculty ({{ currentSemesterByFaculty.length }})"
+      label="Faculty ({{ currentSemesterByFaculty.length }})"
     >
       <div 
         gdColumns.lt-md="100%"
@@ -170,12 +167,10 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <p
+            <mat-selection-list>
+              <mat-list-option
               *ngFor='let c of f.classes'
-              gdColumns="90% 10%"
-              style='background-color: whitesmoke; padding: 5px; border-radius: 5px;'
-            >
-              <span>
+              >
                 {{ c.class }} 
                 <span
                   *ngIf='c.numberOfSections > 1'
@@ -183,11 +178,8 @@
                   &nbsp;
                   ({{ c.numberOfSections }} sections)
                 </span>
-              </span>
-              <mat-checkbox>
-                Me
-              </mat-checkbox>
-            </p>
+                </mat-list-option>         
+            </mat-selection-list>
           </mat-card-content>
         </mat-card>
       </div>  
