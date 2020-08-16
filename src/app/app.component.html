@@ -169,14 +169,15 @@
           <mat-card-content>
             <mat-selection-list>
               <mat-list-option
-              *ngFor='let c of f.classes'
+                *ngFor='let c of f.classes'
               >
-                {{ c.class }} 
-                <span
-                  *ngIf='c.numberOfSections > 1'
-                >
-                  &nbsp;
-                  ({{ c.numberOfSections }} sections)
+                <span>
+                  {{ c.class }} 
+                  <span
+                    *ngIf='c.numberOfSections > 1'
+                  >
+                    ({{ c.numberOfSections }} sections)
+                  </span>
                 </span>
                 </mat-list-option>         
             </mat-selection-list>
