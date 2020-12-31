@@ -47,13 +47,94 @@ export class AppComponent {
     , 'Fall'
   ];
 
-  displaySemesterIndex = 0;
-
   get displaySemester() {
     return this.semesters[this.displaySemesterIndex];
   }
 
-  displayYear = 2020;
+  //
+  // Try initializing these better ! ! !
+  //
+  // For example, if month is Dec, show Spring of next year...
+  //
+  // If month is Aug, show Fall of current year...
+  //
+  // If month is May, show Summer of current year...
+  //
+  // Otherwise... ? ? ?
+  //
+  // Maybe just map month to semester to show, and sometimes year + 1... 
+  //
+  // Hmm, i-o-g...
+  //
+
+  // This will get turned into a Map for lookup ! ! ! i-o-g... idiot, just use array and array index... meh...
+  yearSemesterLookupByMonthData = [
+    // Jan
+    , {
+      displaySemesterIndex: 0
+      , yearOffset: 0
+    }
+    // Feb
+    , {
+      displaySemesterIndex: 0
+      , yearOffset: 0
+    }
+    // March
+    , {
+      displaySemesterIndex: 0
+      , yearOffset: 0
+    }
+    // April
+    , {
+      displaySemesterIndex: 0
+      , yearOffset: 0
+    }
+    // May
+    , {
+      displaySemesterIndex: 1
+      , yearOffset: 0
+    }
+    // June
+    , {
+      displaySemesterIndex: 1
+      , yearOffset: 0
+    }
+    // July
+    , {
+      displaySemesterIndex: 1
+      , yearOffset: 0
+    }
+    // August
+    , {
+      displaySemesterIndex: 2
+      , yearOffset: 0
+    }
+    // September
+    , {
+      displaySemesterIndex: 2
+      , yearOffset: 0
+    }
+    // October
+    , {
+      displaySemesterIndex: 2
+      , yearOffset: 0
+    }
+    // November
+    , {
+      displaySemesterIndex: 2
+      , yearOffset: 0
+    }
+    // December
+    , {
+      displaySemesterIndex: 0
+      , yearOffset: 1
+    }
+  ]
+
+  today = new Date();
+
+  displayYear = this.today.getFullYear() + this.yearSemesterLookupByMonthData[this.today.getMonth()].yearOffset;
+  displaySemesterIndex = this.yearSemesterLookupByMonthData[this.today.getMonth()].displaySemesterIndex;
 
   loadedSemesters = new Map<string, any[]>();
   currentSemesterByClass = [];
