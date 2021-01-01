@@ -20,7 +20,12 @@ export class AppComponent {
     //   , foo: "Bar"
     // });
 
-    this.nextSemester();
+    //this.nextSemester();
+    //this.previousSemester();
+    //console.log(this.displayYear);
+    //console.log(this.displaySemesterIndex);
+
+    this.loadAndInitializeTab(); 
   }
 
   refresh() {
@@ -70,7 +75,7 @@ export class AppComponent {
   // This will get turned into a Map for lookup ! ! ! i-o-g... idiot, just use array and array index... meh...
   yearSemesterLookupByMonthData = [
     // Jan
-    , {
+    {
       displaySemesterIndex: 0
       , yearOffset: 0
     }
