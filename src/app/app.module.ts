@@ -19,7 +19,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify from 'aws-amplify';
-import awsconfig from '../aws-exports';
+import awsconfig from '../aws-exports.js';
 
 Amplify.configure(awsconfig);
 
