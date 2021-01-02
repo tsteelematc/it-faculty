@@ -17,6 +17,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import Amplify from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
+
 @NgModule({
   declarations: [
     AppComponent
@@ -36,6 +42,7 @@ import { MatListModule } from '@angular/material/list';
     MatSnackBarModule,
     MatCheckboxModule,
     MatListModule,
+    AmplifyUIAngularModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

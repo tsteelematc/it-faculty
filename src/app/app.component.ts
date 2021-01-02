@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CoursesService } from './courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
