@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
     "@angular/service-worker": "~9.1.9",
+    "@aws-amplify/ui-angular": "^0.4.16",
+    "aws-amplify": "^3.3.13",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
