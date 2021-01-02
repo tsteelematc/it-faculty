@@ -15,7 +15,12 @@ export class CoursesService {
 //     );
 //   }
 
-  loadCourses(semester: string): Promise<any> {
+//
+// Looked at this again, wow, not using aws-amplify, rather...
+//
+// Just using built in Angular HTTP service, i-o-g : - )
+//
+loadCourses(semester: string): Promise<any> {
     this.loading = true;
 
     return new Promise<any>(
