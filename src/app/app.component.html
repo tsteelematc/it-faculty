@@ -121,8 +121,8 @@
   <mat-tab-group *ngIf='currentSemesterByClass.length > 0 && currentSemesterByFaculty.length > 0 && !coursesSvc.loading' style="margin: -15px;">
     <mat-tab>
       <ng-template mat-tab-label>
-        <mat-icon color='primary'>crop_16_9</mat-icon>
-        &nbsp;
+        <!-- <mat-icon color='primary'>crop_16_9</mat-icon>
+        &nbsp; -->
         Classes ({{ currentSemesterByClass.length }})
       </ng-template>
       <div 
@@ -153,8 +153,8 @@
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
-        <mat-icon color='primary'>perm_identity</mat-icon>
-        &nbsp;
+        <!-- <mat-icon color='primary'>perm_identity</mat-icon>
+        &nbsp; -->
         Faculty ({{ currentSemesterByFaculty.length }})
       </ng-template>
       <div 
@@ -193,8 +193,8 @@
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
-        <mat-icon color='primary'>done</mat-icon>
-        &nbsp;
+        <!-- <mat-icon color='primary'>done</mat-icon>
+        &nbsp; -->
         Me
       </ng-template>
       <amplify-authenticator>
