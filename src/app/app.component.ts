@@ -11,6 +11,8 @@ import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-ampli
 })
 export class AppComponent {
 
+  classesForUser = [];
+
   constructor(
     public coursesSvc: CoursesService
     , private snackBar: MatSnackBar
@@ -26,6 +28,8 @@ export class AppComponent {
     //this.previousSemester();
     //console.log(this.displayYear);
     //console.log(this.displaySemesterIndex);
+
+    this.classesForUser = this.coursesSvc.loadUserClassesMock("tsteele@madisoncollege.edu");
 
     this.loadAndInitializeTab(); 
   }
@@ -174,8 +178,18 @@ export class AppComponent {
       if (!this.loadedSemesters.has(`${fetchingDataForSemester} ${fetchingDataForYear}`)) {
 
         const loadedSemester = await this.coursesSvc.loadCourses(`${fetchingDataForSemester} ${fetchingDataForYear}`);
-        //console.log(loadedSemester);
-        this.loadedSemesters.set(`${fetchingDataForSemester} ${fetchingDataForYear}`, loadedSemester);
+        console.log(loadedSemester);
+        
+        const loadedSemesterWithClasses = loadedSemester.map(x =>({
+          ...x
+          , faculty: x.faculty.map(y => ({
+            faculty: y
+            , checked: true
+          }))
+        }));
+        console.log(loadedSemesterWithClasses);
+
+        this.loadedSemesters.set(`${fetchingDataForSemester} ${fetchingDataForYear}`, loadedSemesterWithClasses);
         //console.log(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`));
       }
     }
@@ -207,7 +221,11 @@ export class AppComponent {
     this.currentSemesterByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
       .map(x => ({
         class: x.class
-        , faculty: new Set([...x.faculty].sort().map((x, i, arr) => `${x} ${arr.filter(y => y === x).length > 1 ? '(' + arr.filter(y => y === x).length + ' sections)' : ''}`))
+        , faculty: new Set([...x.faculty.map(y => y.faculty)].sort().map((y, i, arr) => ({
+              faculty: `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`
+              , checked : true
+            })
+            ))
       }))
       .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
     ;

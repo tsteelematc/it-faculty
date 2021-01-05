@@ -47,5 +47,20 @@ loadCourses(semester: string): Promise<any> {
     )
   }
 
+  loadUserClassesMock(email: string) {
+
+    return [
+        {
+            semester: "Spring 2021"
+            , classes: [
+                {
+                    faculty: "Thomas Steele"
+                    , class: "Advanced Front End Development"
+                }
+            ]
+        }
+    ];
+  }
+
   loading = false;
 }
