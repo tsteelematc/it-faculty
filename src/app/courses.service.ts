@@ -66,6 +66,15 @@ loadCourses(semester: string): Promise<any> {
                 }
             ]
         }
+        , {
+          semester: "Fall 2020"
+          , classes: [
+              {
+                  faculty: "Lori Rodas"
+                  , class: "Advanced CSS"
+              }
+          ]
+      }
     ];
   }
 

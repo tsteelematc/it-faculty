@@ -224,9 +224,8 @@ export class AppComponent {
         faculty: y
         , checked: this.classesForUser.some(z => 
           z.semester === `${this.displaySemester} ${this.displayYear}`
-          && z.classes.some(a =>
-            y.startsWith(a.faculty)
-          )
+          && z.classes.some(a => a.class === x.class)
+          && z.classes.some(a => y.startsWith(a.faculty))
         )
       }))
     }))
