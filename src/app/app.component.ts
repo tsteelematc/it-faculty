@@ -4,6 +4,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
+interface DisplayByClassData {
+  class: string;
+  faculty: {
+    faculty: string   // Hacked to show multiple sessions, for now ! ! !
+    , checked: boolean
+  }    
+}
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -148,7 +158,7 @@ export class AppComponent {
   displaySemesterIndex = this.yearSemesterLookupByMonthData[this.today.getMonth()].displaySemesterIndex;
 
   loadedSemesters = new Map<string, any[]>();
-  currentSemesterByClass = [];
+  currentSemesterByClass: DisplayByClassData[] = [];
   currentSemesterByFaculty = [];
 
   previousSemester() {
