@@ -9,7 +9,7 @@ interface DisplayByClassData {
   faculty: {
     faculty: string   // Hacked to show multiple sessions, for now ! ! !
     , checked: boolean
-  }    
+  }[]    
 }
 
 
@@ -188,19 +188,7 @@ export class AppComponent {
       if (!this.loadedSemesters.has(`${fetchingDataForSemester} ${fetchingDataForYear}`)) {
 
         const loadedSemester = await this.coursesSvc.loadCourses(`${fetchingDataForSemester} ${fetchingDataForYear}`);
-        console.log(loadedSemester);
-        
-        const loadedSemesterWithClasses = loadedSemester.map(x =>({
-          ...x
-          , faculty: x.faculty.map(y => ({
-            faculty: y
-            , checked: true
-          }))
-        }));
-        console.log(loadedSemesterWithClasses);
-
-        this.loadedSemesters.set(`${fetchingDataForSemester} ${fetchingDataForYear}`, loadedSemesterWithClasses);
-        //console.log(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`));
+        this.loadedSemesters.set(`${fetchingDataForSemester} ${fetchingDataForYear}`, loadedSemester);
       }
     }
     catch (err) {
@@ -225,19 +213,19 @@ export class AppComponent {
 
   initTabs() {
 
-    //console.log(JSON.stringify(this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)));
-    
+
     // Data is essentially in 'by class' shape, so no reduce, just unique and sort...
     this.currentSemesterByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
-      .map(x => ({
-        class: x.class
-        , faculty: new Set([...x.faculty.map(y => y.faculty)].sort().map((y, i, arr) => ({
-              faculty: `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`
-              , checked : true
-            })
-            ))
+    .map(x => ({
+      class: x.class
+      , faculty: [
+        ...new Set([...x.faculty].sort().map((y, i, arr) => `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`))
+      ].map(y => ({
+        faculty: y
+        , checked: true
       }))
-      .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
+    }))
+    .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
     ;
 
     //console.log(this.currentSemesterByClass);

@@ -143,6 +143,7 @@
             <mat-selection-list>
               <mat-list-option
                 *ngFor='let f of c.faculty'
+                [selected]='f.checked'
               >
                 {{ f.faculty }}
               </mat-list-option>         
