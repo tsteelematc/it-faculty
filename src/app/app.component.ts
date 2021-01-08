@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CoursesService } from './courses.service';
+import { CoursesService, UserClass } from './courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
@@ -21,7 +21,7 @@ interface DisplayByClassData {
 })
 export class AppComponent {
 
-  classesForUser = [];
+  classesForUser: UserClass[] = [];
 
   constructor(
     public coursesSvc: CoursesService
@@ -222,7 +222,12 @@ export class AppComponent {
         ...new Set([...x.faculty].sort().map((y, i, arr) => `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`))
       ].map(y => ({
         faculty: y
-        , checked: true
+        , checked: this.classesForUser.some(z => 
+          z.semester === `${this.displaySemester} ${this.displayYear}`
+          && z.classes.some(a =>
+            y.startsWith(a.faculty)
+          )
+        )
       }))
     }))
     .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)

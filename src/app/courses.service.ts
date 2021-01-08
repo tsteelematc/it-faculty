@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
+export interface UserClass {
+  semester: string;
+  classes: {
+    faculty: string;
+    class: string;
+  }[];
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -47,7 +54,7 @@ loadCourses(semester: string): Promise<any> {
     )
   }
 
-  loadUserClassesMock(email: string) {
+  loadUserClassesMock(email: string): UserClass[] {
 
     return [
         {
