@@ -216,12 +216,17 @@ export class AppComponent {
 
     // Data is essentially in 'by class' shape, so no reduce, just unique and sort...
     this.currentSemesterByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
+    // map() it to an object...
     .map(x => ({
       class: x.class
       , faculty: [
+        // Don't duplicate faculty, rather append number of sections if more than one...
         ...new Set([...x.faculty].sort().map((y, i, arr) => `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`))
-      ].map(y => ({
+      ]
+      // Then map it all to another object to add the checked property...
+      .map(y => ({
         faculty: y
+        // Checked lookup Logic here is i-o-g for sure : - )
         , checked: this.classesForUser.some(z => 
           z.semester === `${this.displaySemester} ${this.displayYear}`
           && z.classes.some(a => a.class === x.class)
