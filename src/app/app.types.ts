@@ -5,18 +5,28 @@
 //
 type SemesterDataFromCloud = any[];
 
+type Semester = string;
+
+export const Semesters = [
+    'Spring'
+    , 'Summer'
+    , 'Fall'
+];
+
+type MakeSemester = (semester: string, year: number) => string;
+
 //
 // Each class in the array from the cloud (DynamoDB) results is one of these...
 //
 type SemesterClassFromCloud = {
-    class: string;
+    class: Semester;
     faculty: string[];
 };
 
 //
 // Data is 'cached' locally in a Map so as not to keep querying the cloud (DynamoDB) needlessly...
 //
-type CachedSemesterData = Map<
+export type CachedSemesterData = Map<
     string
     , SemesterClassFromCloud[]
 >;
@@ -27,7 +37,7 @@ type CachedSemesterData = Map<
 // Not, this had the sections hacked into the display string. This was done
 // differently for the Faculty tab...
 //
-type DisplayByClassData = {
+export type DisplayByClassData = {
     class: string;
     faculty: {
       facultyWithSessionCountIfNecessary: string
@@ -38,7 +48,7 @@ type DisplayByClassData = {
 //
 // Data shape for the Faculty tab...
 //
-type DisplayByFacultyData = {
+export type DisplayByFacultyData = {
     faculty: string;
     classes: {
         class: string;
@@ -47,10 +57,10 @@ type DisplayByFacultyData = {
     }[];
 };
 
-type UserClass = {
+export type UserClass = {
     semester: string;
     classes: {
       faculty: string;
       class: string;
-    }[]
+    }[];
 };

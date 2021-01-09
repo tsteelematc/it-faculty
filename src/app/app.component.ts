@@ -4,6 +4,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
+import { 
+  UserClass
+  , CachedSemesterData
+  , DisplayByClassData
+  , DisplayByFacultyData
+  , Semesters 
+} from './app.types';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -52,14 +60,8 @@ export class AppComponent {
 
   title = 'it-faculty';
 
-  semesters = [
-    'Spring'
-    , 'Summer'
-    , 'Fall'
-  ];
-
   get displaySemester() {
-    return this.semesters[this.displaySemesterIndex];
+    return Semesters[this.displaySemesterIndex];
   }
 
   //
