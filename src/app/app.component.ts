@@ -210,17 +210,17 @@ export class AppComponent {
       // map() it to an object...
       .map(x => ({
         class: x.class
-        , faculty: [
-          // Don't duplicate faculty, rather append number of sections if more than one...
-          ...new Set([...x.faculty].sort().map((y, i, arr) => `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`))
-        ].map(y => ({
-          facultyWithSessionCountIfNecessary: y.trimRight()
-        
+        , faculty: [...x.faculty.reduce(
+            (acc: Map<string, number>, y) => acc.has(y) ? acc.set(y, acc.get(y) + 1) : acc.set(y, 1)
+          , new Map<string, number>()          
+        )].map(z => ({
+          faculty: z[0]
+          , numberOfSections: z[1]
           // Checked lookup Logic here is i-o-g for sure : - )
-          , checked: this.classesForUser.some(z =>
-            z.semester === `${this.displaySemester} ${this.displayYear}`
-            && z.class === x.class
-            && y.startsWith(z.faculty)
+          , checked: this.classesForUser.some(a =>
+            a.semester === `${this.displaySemester} ${this.displayYear}`
+            && a.class === x.class
+            && z[0].startsWith(a.faculty)
           )
         })
       )
@@ -290,7 +290,7 @@ toggleCheck(c, facultyCheckedOrUnchecked) {
         return !(
           x.semester == `${this.displaySemester} ${this.displayYear}`
           && x.class == c
-          && x.faculty == facultyCheckedOrUnchecked.facultyWithSessionCountIfNecessary
+          && x.faculty == facultyCheckedOrUnchecked.faculty
         );
       }
     );
@@ -303,7 +303,7 @@ toggleCheck(c, facultyCheckedOrUnchecked) {
       , {
         semester: `${this.displaySemester} ${this.displayYear}`
         , class: c
-        , faculty: facultyCheckedOrUnchecked.facultyWithSessionCountIfNecessary
+        , faculty: facultyCheckedOrUnchecked.faculty
       }
     ];
   }

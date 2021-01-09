@@ -49,7 +49,8 @@ export type CachedSemesterData = Map<
 export type DisplayByClassData = {
     class: string;
     faculty: {
-      facultyWithSessionCountIfNecessary: string
+      faculty: string
+      , numberOfSections: number
       , checked: boolean
     }[];
 };

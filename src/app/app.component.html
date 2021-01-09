@@ -146,7 +146,14 @@
                 [(selected)]='f.checked'
                 (click)='toggleCheck(c.class, f)'
               >
-                {{ f.facultyWithSessionCountIfNecessary }}
+                <span>
+                  {{ f.faculty }}
+                  <span
+                    *ngIf='f.numberOfSections > 1'
+                  >
+                    ({{ f.numberOfSections }} sections)
+                  </span>
+                </span>
               </mat-list-option>         
             </mat-selection-list>
           </mat-card-content>
