@@ -214,7 +214,7 @@ export class AppComponent {
           // Don't duplicate faculty, rather append number of sections if more than one...
           ...new Set([...x.faculty].sort().map((y, i, arr) => `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`))
         ].map(y => ({
-          facultyWithSessionCountIfNecessary: y
+          facultyWithSessionCountIfNecessary: y.trimRight()
         
           // Checked lookup Logic here is i-o-g for sure : - )
           , checked: this.classesForUser.some(z =>
