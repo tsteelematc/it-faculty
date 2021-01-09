@@ -61,6 +61,16 @@ loadCourses(semester: string): Promise<any> {
           , faculty: "Lori Rodas"
           , class: "Advanced CSS"
       }
+      , {
+        semester: "Summer 2020"
+        , faculty: "Thomas Steele"
+        , class: "SQL Programming"
+      }    
+      , {
+        semester: "Spring 2020"
+        , faculty: "Thomas Steele"
+        , class: "SQL Programming"
+      }    
     ];
   }
 

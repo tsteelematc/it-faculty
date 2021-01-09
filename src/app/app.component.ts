@@ -44,7 +44,26 @@ export class AppComponent {
         , acc.has(x.semester) ? [...acc.get(x.semester), x.class] : [x.class]
       )
       , new Map<string, string[]>()
-    )];
+    )].map(x => ({
+      semester: x[0]
+      , classes: x[1]
+    })).sort((x, y) => {
+
+      // String hacking now, but could/should be in semester module or something, maybe ? ? ?
+
+      // Separate the year and the term.
+      const [xTerm, xYear] = x.semester.split(' ');      
+      const [yTerm, yYear] = y.semester.split(' ');
+
+      const xTermSort = xTerm == 'Spring' ? 0 : xTerm == 'Summer' ? 1 : 2;
+      const yTermSort = yTerm == 'Spring' ? 0 : yTerm == 'Summer' ? 1 : 2;
+
+      // Sort by year first.
+      // Then by term, somehow.
+      return xYear == yYear ?
+        (xTermSort < yTermSort ? -1 : 1) :
+        xYear < yYear ? -1 : 1
+    });
 
     this.loadAndInitializeTab();
   }
