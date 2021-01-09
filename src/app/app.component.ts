@@ -4,12 +4,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
-import { 
+import {
   UserClass
   , CachedSemesterData
   , DisplayByClassData
   , DisplayByFacultyData
-  , Semesters 
+  , Semesters
 } from './app.types';
 
 @Component({
@@ -39,7 +39,7 @@ export class AppComponent {
 
     this.classesForUser = this.coursesSvc.loadUserClassesMock("tsteele@madisoncollege.edu");
 
-    this.loadAndInitializeTab(); 
+    this.loadAndInitializeTab();
   }
 
   refresh() {
@@ -154,16 +154,16 @@ export class AppComponent {
   currentSemesterByFaculty: DisplayByFacultyData[] = [];
 
   previousSemester() {
-      // First check semester to see if we have to switch the year.
-      if (this.displaySemester == 'Spring') {
-        this.displaySemesterIndex = 2;
-        this.displayYear--;
-      } 
-      else {
-        this.displaySemesterIndex--
-      }
+    // First check semester to see if we have to switch the year.
+    if (this.displaySemester == 'Spring') {
+      this.displaySemesterIndex = 2;
+      this.displayYear--;
+    }
+    else {
+      this.displaySemesterIndex--
+    }
 
-      this.loadAndInitializeTab();
+    this.loadAndInitializeTab();
   }
 
   private async loadAndInitializeTab() {
@@ -192,118 +192,118 @@ export class AppComponent {
   }
 
   nextSemester() {
-      // First check semester to see if we have to switch the year.
-      if (this.displaySemester == 'Fall') {
-        this.displaySemesterIndex = 0;
-        this.displayYear++;
-      } 
-      else {
-        this.displaySemesterIndex++
-      }
-      this.loadAndInitializeTab();
+    // First check semester to see if we have to switch the year.
+    if (this.displaySemester == 'Fall') {
+      this.displaySemesterIndex = 0;
+      this.displayYear++;
+    }
+    else {
+      this.displaySemesterIndex++
+    }
+    this.loadAndInitializeTab();
   }
 
   initTabs() {
 
-
     // Data is essentially in 'by class' shape, so no reduce, just unique and sort...
     this.currentSemesterByClass = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
-    // map() it to an object...
-    .map(x => ({
-      class: x.class
-      , faculty: [
-        // Don't duplicate faculty, rather append number of sections if more than one...
-        ...new Set([...x.faculty].sort().map((y, i, arr) => `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`))
-      ]
-      // Then map it all to another object to add the checked property...
-      .map(y => ({
-        facultyWithSessionCountIfNecessary: y
-        // Checked lookup Logic here is i-o-g for sure : - )
-        , checked: this.classesForUser.some(z => 
-          z.semester === `${this.displaySemester} ${this.displayYear}`
-          && z.classes.some(a => a.class === x.class)
-          && z.classes.some(a => y.startsWith(a.faculty))
-        )
-      }))
+      // map() it to an object...
+      .map(x => ({
+        class: x.class
+        , faculty: [
+          // Don't duplicate faculty, rather append number of sections if more than one...
+          ...new Set([...x.faculty].sort().map((y, i, arr) => `${y} ${arr.filter(z => z === y).length > 1 ? '(' + arr.filter(z => z === y).length + ' sections)' : ''}`))
+        ].map(y => ({
+          facultyWithSessionCountIfNecessary: y
+        
+          // Checked lookup Logic here is i-o-g for sure : - )
+          , checked: this.classesForUser.some(z =>
+            z.semester === `${this.displaySemester} ${this.displayYear}`
+            && z.class === x.class
+            && y.startsWith(z.faculty)
+          )
+        })
+      )
     }))
     .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
-    ;
+  ;
 
-    //console.log(this.currentSemesterByClass);
+//console.log(this.currentSemesterByClass);
 
-    const groupedByFaculty = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
-      .reduce(
-        (acc, x) => [
-          ...acc
-          , ...x.faculty.map(y => ({
-            class: x.class 
-            , faculty: y
-          }))
-        ]
-        , []
-      )
-      .reduce(
-        (acc: Map<string, Map<string, number>>, x) => acc.has(x.faculty) 
-          ? acc.set(x.faculty, acc.get(x.faculty).set(x.class, acc.get(x.faculty).has(x.class)
-            ? acc.get(x.faculty).get(x.class) + 1
-            : 1)) 
-          : acc.set(x.faculty, new Map().set(x.class, 1))
-        , new Map<string, Map<string, number>>()
-      )
-    ;
-
-    //console.log([...groupedByFaculty]);
-
-    this.currentSemesterByFaculty = [...groupedByFaculty]
-      .map(x => ({
-        faculty: x[0]
-        , classes: [
-          ...x[1]
-        ]
-        .map(y => ({ 
-          class: y[0]
-          , numberOfSections: y[1]
-          , checked: this.classesForUser.some(z => 
-            z.semester === `${this.displaySemester} ${this.displayYear}`
-            && z.classes.some(a => a.faculty === x[0])
-            && z.classes.some(a => a.class === y[0])
-          )
-        }))
-        .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
+const groupedByFaculty = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
+  .reduce(
+    (acc, x) => [
+      ...acc
+      , ...x.faculty.map(y => ({
+        class: x.class
+        , faculty: y
       }))
-      .sort((a, b) => a.faculty == b.faculty ? 0 : a.faculty < b.faculty ? -1 : 1)
-    ;
+    ]
+    , []
+  )
+  .reduce(
+    (acc: Map<string, Map<string, number>>, x) => acc.has(x.faculty)
+      ? acc.set(x.faculty, acc.get(x.faculty).set(x.class, acc.get(x.faculty).has(x.class)
+        ? acc.get(x.faculty).get(x.class) + 1
+        : 1))
+      : acc.set(x.faculty, new Map().set(x.class, 1))
+    , new Map<string, Map<string, number>>()
+  )
+  ;
+
+//console.log([...groupedByFaculty]);
+
+this.currentSemesterByFaculty = [...groupedByFaculty]
+  .map(x => ({
+    faculty: x[0]
+    , classes: [
+      ...x[1]
+    ]
+      .map(y => ({
+        class: y[0]
+        , numberOfSections: y[1]
+        , checked: this.classesForUser.some(z =>
+          z.semester === `${this.displaySemester} ${this.displayYear}`
+          && z.faculty === x[0]
+          && z.class === y[0]
+        )
+      }))
+      .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
+  }))
+  .sort((a, b) => a.faculty == b.faculty ? 0 : a.faculty < b.faculty ? -1 : 1)
+  ;
 
     //console.log(this.currentSemesterByFaculty);
   }
 
-  toggleCheck(c, facultyCheckedOrUnchecked) {
-    
-    console.log(c);
-    console.log(facultyCheckedOrUnchecked);
+toggleCheck(c, facultyCheckedOrUnchecked) {
 
-    if (facultyCheckedOrUnchecked.checked) {
-      // Remove this item from this user's classes.
+  console.log(this.classesForUser);
+  console.log(c);
+  console.log(facultyCheckedOrUnchecked);
 
-    }
-
-    else {
-      // Add a new item to this user's classes.
-      const semester = this.classesForUser.find(x => x.semester === `${this.displaySemester} ${this.displayYear}`);
-      console.log(semester);
-      semester.classes = [
-        ...semester.classes
-        , {
-          faculty: facultyCheckedOrUnchecked.faculty
-          , class: c
-        }
-      ];
-      console.log(semester.classes);
-    }
-
-    // Update the tabs.
-
-    // Save the data back to the cloud.
+  if (facultyCheckedOrUnchecked.checked) {
+    // Remove this item from this user's classes.
 
   }
+
+  else {
+    // Add a new item to this user's classes.
+    this.classesForUser = [
+      ...this.classesForUser
+      , {
+        semester: `${this.displaySemester} ${this.displayYear}`
+        , class: c
+        , faculty: facultyCheckedOrUnchecked.facultyWithSessionCountIfNecessary
+      }
+    ];
+  }
+
+  console.log(this.classesForUser);
+
+  // Update the tabs.
+
+  // Save the data back to the cloud.
+
+}
 }

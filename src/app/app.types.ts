@@ -67,9 +67,7 @@ export type DisplayByFacultyData = {
 };
 
 export type UserClass = {
-    semester: string;
-    classes: {
-      faculty: string;
-      class: string;
-    }[];
+    semester: Semester;
+    class: string;
+    faculty: string;
 };

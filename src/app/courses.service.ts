@@ -53,21 +53,13 @@ loadCourses(semester: string): Promise<any> {
     return [
         {
             semester: "Spring 2021"
-            , classes: [
-                {
-                    faculty: "Thomas Steele"
-                    , class: "Advanced Front End Development"
-                }
-            ]
+            , faculty: "Thomas Steele"
+            , class: "Advanced Front End Development"
         }
         , {
           semester: "Fall 2020"
-          , classes: [
-              {
-                  faculty: "Lori Rodas"
-                  , class: "Advanced CSS"
-              }
-          ]
+          , faculty: "Lori Rodas"
+          , class: "Advanced CSS"
       }
     ];
   }
