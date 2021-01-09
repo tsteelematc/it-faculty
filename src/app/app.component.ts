@@ -282,9 +282,18 @@ toggleCheck(c, facultyCheckedOrUnchecked) {
   console.log(c);
   console.log(facultyCheckedOrUnchecked);
 
+  // Make proper saved user data.
   if (facultyCheckedOrUnchecked.checked) {
     // Remove this item from this user's classes.
-
+    this.classesForUser = this.classesForUser.filter(x => {
+        console.log(x);
+        return !(
+          x.semester == `${this.displaySemester} ${this.displayYear}`
+          && x.class == c
+          && x.faculty == facultyCheckedOrUnchecked.facultyWithSessionCountIfNecessary
+        );
+      }
+    );
   }
 
   else {
@@ -300,6 +309,11 @@ toggleCheck(c, facultyCheckedOrUnchecked) {
   }
 
   console.log(this.classesForUser);
+
+  // Toggle the display data checked state.
+  facultyCheckedOrUnchecked.checked = !facultyCheckedOrUnchecked.checked;
+
+  console.log(facultyCheckedOrUnchecked);
 
   // Update the tabs.
 
