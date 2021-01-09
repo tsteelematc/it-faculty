@@ -64,12 +64,12 @@ loadCourses(semester: string): Promise<any> {
       , {
         semester: "Summer 2020"
         , faculty: "Thomas Steele"
-        , class: "SQL Programming"
+        , class: "SQL Database Programming"
       }    
       , {
-        semester: "Spring 2020"
+        semester: "Fall 2020"
         , faculty: "Thomas Steele"
-        , class: "SQL Programming"
+        , class: "SQL Database Programming"
       }    
     ];
   }
