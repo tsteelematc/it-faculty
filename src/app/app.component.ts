@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CoursesService, UserClass } from './courses.service';
+import { CoursesService } from './courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';

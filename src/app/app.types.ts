@@ -9,8 +9,8 @@ type SemesterDataFromCloud = any[];
 // Each class in the array from the cloud (DynamoDB) results is one of these...
 //
 type SemesterClassFromCloud = {
-    class: string
-    , faculty: string[];
+    class: string;
+    faculty: string[];
 };
 
 //
@@ -28,21 +28,29 @@ type CachedSemesterData = Map<
 // differently for the Faculty tab...
 //
 type DisplayByClassData = {
-    class: string
-    , faculty: {
+    class: string;
+    faculty: {
       facultyWithSessionCountIfNecessary: string
       , checked: boolean
-    }[]
+    }[];
 };
   
 //
 // Data shape for the Faculty tab...
 //
 type DisplayByFacultyData = {
-    faculty: string
-    , classes: {
-        class: string
-        , numberOfSections: number
-        , checked: boolean
+    faculty: string;
+    classes: {
+        class: string;
+        numberOfSections: number;
+        checked: boolean;
+    }[];
+};
+
+type UserClass = {
+    semester: string;
+    classes: {
+      faculty: string;
+      class: string;
     }[]
 };
