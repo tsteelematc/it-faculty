@@ -5,6 +5,11 @@
 //
 type SemesterDataFromCloud = any[];
 
+//
+// Semester related type playing...
+//
+// Looking for type safety and 'understanding' here, fools errand ? ? ?
+//
 type Semester = string;
 
 export const Semesters = [
@@ -13,7 +18,11 @@ export const Semesters = [
     , 'Fall'
 ];
 
-type MakeSemester = (semester: string, year: number) => string;
+type MakeSemesterFunc = (semester: string, year: number) => Semester;
+export const MakeSemester: MakeSemesterFunc = (s, y) => `${s} ${y}`;
+
+type NextSemesterFunc = (s: Semester) => Semester;
+type PreviousSemesterFunc = (s: Semester) => Semester;
 
 //
 // Each class in the array from the cloud (DynamoDB) results is one of these...

@@ -47,7 +47,7 @@ export class AppComponent {
       'Refresh to clear & reload data'
       , 'Refresh'
       , {
-        duration: 3500,
+        duration: 3500
       }
     );
 
@@ -191,7 +191,7 @@ export class AppComponent {
     }
   }
 
-  async nextSemester() {
+  nextSemester() {
       // First check semester to see if we have to switch the year.
       if (this.displaySemester == 'Fall') {
         this.displaySemesterIndex = 0;
