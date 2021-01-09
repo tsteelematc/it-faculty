@@ -144,7 +144,7 @@
               <mat-list-option
                 *ngFor='let f of c.faculty'
                 [(selected)]='f.checked'
-                (click)='toggleCheck(c.class, f)'
+                (click)='toggleCheckOnClassesTab(c.class, f)'
               >
                 <span>
                   {{ f.faculty }}
@@ -186,6 +186,7 @@
               <mat-list-option
                 *ngFor='let c of f.classes'
                 [selected]='c.checked'
+                (click)='toggleCheckOnFacultyTab(f.faculty, c)'
               >
                 <span>
                   {{ c.class }} 

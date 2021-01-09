@@ -211,8 +211,8 @@ export class AppComponent {
       .map(x => ({
         class: x.class
         , faculty: [...x.faculty.reduce(
-            (acc: Map<string, number>, y) => acc.has(y) ? acc.set(y, acc.get(y) + 1) : acc.set(y, 1)
-          , new Map<string, number>()          
+          (acc: Map<string, number>, y) => acc.has(y) ? acc.set(y, acc.get(y) + 1) : acc.set(y, 1)
+          , new Map<string, number>()
         )].map(z => ({
           faculty: z[0]
           , numberOfSections: z[1]
@@ -223,69 +223,69 @@ export class AppComponent {
             && z[0].startsWith(a.faculty)
           )
         })
-      )
-    }))
-    .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
-  ;
-
-//console.log(this.currentSemesterByClass);
-
-const groupedByFaculty = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
-  .reduce(
-    (acc, x) => [
-      ...acc
-      , ...x.faculty.map(y => ({
-        class: x.class
-        , faculty: y
-      }))
-    ]
-    , []
-  )
-  .reduce(
-    (acc: Map<string, Map<string, number>>, x) => acc.has(x.faculty)
-      ? acc.set(x.faculty, acc.get(x.faculty).set(x.class, acc.get(x.faculty).has(x.class)
-        ? acc.get(x.faculty).get(x.class) + 1
-        : 1))
-      : acc.set(x.faculty, new Map().set(x.class, 1))
-    , new Map<string, Map<string, number>>()
-  )
-  ;
-
-//console.log([...groupedByFaculty]);
-
-this.currentSemesterByFaculty = [...groupedByFaculty]
-  .map(x => ({
-    faculty: x[0]
-    , classes: [
-      ...x[1]
-    ]
-      .map(y => ({
-        class: y[0]
-        , numberOfSections: y[1]
-        , checked: this.classesForUser.some(z =>
-          z.semester === `${this.displaySemester} ${this.displayYear}`
-          && z.faculty === x[0]
-          && z.class === y[0]
         )
       }))
       .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
-  }))
-  .sort((a, b) => a.faculty == b.faculty ? 0 : a.faculty < b.faculty ? -1 : 1)
-  ;
+      ;
+
+    //console.log(this.currentSemesterByClass);
+
+    const groupedByFaculty = this.loadedSemesters.get(`${this.displaySemester} ${this.displayYear}`)
+      .reduce(
+        (acc, x) => [
+          ...acc
+          , ...x.faculty.map(y => ({
+            class: x.class
+            , faculty: y
+          }))
+        ]
+        , []
+      )
+      .reduce(
+        (acc: Map<string, Map<string, number>>, x) => acc.has(x.faculty)
+          ? acc.set(x.faculty, acc.get(x.faculty).set(x.class, acc.get(x.faculty).has(x.class)
+            ? acc.get(x.faculty).get(x.class) + 1
+            : 1))
+          : acc.set(x.faculty, new Map().set(x.class, 1))
+        , new Map<string, Map<string, number>>()
+      )
+      ;
+
+    //console.log([...groupedByFaculty]);
+
+    this.currentSemesterByFaculty = [...groupedByFaculty]
+      .map(x => ({
+        faculty: x[0]
+        , classes: [
+          ...x[1]
+        ]
+          .map(y => ({
+            class: y[0]
+            , numberOfSections: y[1]
+            , checked: this.classesForUser.some(z =>
+              z.semester === `${this.displaySemester} ${this.displayYear}`
+              && z.faculty === x[0]
+              && z.class === y[0]
+            )
+          }))
+          .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
+      }))
+      .sort((a, b) => a.faculty == b.faculty ? 0 : a.faculty < b.faculty ? -1 : 1)
+      ;
 
     //console.log(this.currentSemesterByFaculty);
   }
 
-toggleCheck(c, facultyCheckedOrUnchecked) {
+  toggleCheckOnClassesTab(c, facultyCheckedOrUnchecked) {
 
-  console.log(this.classesForUser);
-  console.log(c);
-  console.log(facultyCheckedOrUnchecked);
+    console.log(this.classesForUser);
+    console.log(c);
+    console.log(facultyCheckedOrUnchecked);
 
-  // Make proper saved user data.
-  if (facultyCheckedOrUnchecked.checked) {
-    // Remove this item from this user's classes.
-    this.classesForUser = this.classesForUser.filter(x => {
+    // Make proper saved user data.
+    if (facultyCheckedOrUnchecked.checked) {
+      // Remove this item from this user's classes.
+      this.classesForUser = this.classesForUser.filter(x => {
         console.log(x);
         return !(
           x.semester == `${this.displaySemester} ${this.displayYear}`
@@ -293,31 +293,76 @@ toggleCheck(c, facultyCheckedOrUnchecked) {
           && x.faculty == facultyCheckedOrUnchecked.faculty
         );
       }
-    );
+      );
+    }
+
+    else {
+      // Add a new item to this user's classes.
+      this.classesForUser = [
+        ...this.classesForUser
+        , {
+          semester: `${this.displaySemester} ${this.displayYear}`
+          , class: c
+          , faculty: facultyCheckedOrUnchecked.faculty
+        }
+      ];
+    }
+
+    console.log(this.classesForUser);
+
+    // Toggle the display data checked state.
+    facultyCheckedOrUnchecked.checked = !facultyCheckedOrUnchecked.checked;
+
+    console.log(facultyCheckedOrUnchecked);
+
+    // Update the tabs.
+
+    // Save the data back to the cloud.
+
   }
 
-  else {
-    // Add a new item to this user's classes.
-    this.classesForUser = [
-      ...this.classesForUser
-      , {
-        semester: `${this.displaySemester} ${this.displayYear}`
-        , class: c
-        , faculty: facultyCheckedOrUnchecked.faculty
+  toggleCheckOnFacultyTab(f, classCheckedOrUnchecked) {
+
+    console.log(this.classesForUser);
+    console.log(f);
+    console.log(classCheckedOrUnchecked);
+
+    // Make proper saved user data.
+    if (classCheckedOrUnchecked.checked) {
+      // Remove this item from this user's classes.
+      this.classesForUser = this.classesForUser.filter(x => {
+        console.log(x);
+        return !(
+          x.semester == `${this.displaySemester} ${this.displayYear}`
+          && x.class == classCheckedOrUnchecked.class
+          && x.faculty == f
+        );
       }
-    ];
+      );
+    }
+
+    else {
+      // Add a new item to this user's classes.
+      this.classesForUser = [
+        ...this.classesForUser
+        , {
+          semester: `${this.displaySemester} ${this.displayYear}`
+          , class: classCheckedOrUnchecked.class
+          , faculty: f
+        }
+      ];
+    }
+
+    console.log(this.classesForUser);
+
+    // Toggle the display data checked state.
+    classCheckedOrUnchecked.checked = !classCheckedOrUnchecked.checked;
+
+    console.log(classCheckedOrUnchecked);
+
+    // Update the tabs.
+
+    // Save the data back to the cloud.
+
   }
-
-  console.log(this.classesForUser);
-
-  // Toggle the display data checked state.
-  facultyCheckedOrUnchecked.checked = !facultyCheckedOrUnchecked.checked;
-
-  console.log(facultyCheckedOrUnchecked);
-
-  // Update the tabs.
-
-  // Save the data back to the cloud.
-
-}
 }
