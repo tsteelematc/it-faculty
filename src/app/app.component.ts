@@ -291,4 +291,34 @@ export class AppComponent {
 
     //console.log(this.currentSemesterByFaculty);
   }
+
+  toggleCheck(c, facultyCheckedOrUnchecked) {
+    
+    console.log(c);
+    console.log(facultyCheckedOrUnchecked);
+
+    if (facultyCheckedOrUnchecked.checked) {
+      // Remove this item from this user's classes.
+
+    }
+
+    else {
+      // Add a new item to this user's classes.
+      const semester = this.classesForUser.find(x => x.semester === `${this.displaySemester} ${this.displayYear}`);
+      console.log(semester);
+      semester.classes = [
+        ...semester.classes
+        , {
+          faculty: facultyCheckedOrUnchecked.faculty
+          , class: c
+        }
+      ];
+      console.log(semester.classes);
+    }
+
+    // Update the tabs.
+
+    // Save the data back to the cloud.
+
+  }
 }
