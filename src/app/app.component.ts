@@ -9,10 +9,17 @@ interface DisplayByClassData {
   faculty: {
     faculty: string   // Hacked to show multiple sessions, for now ! ! !
     , checked: boolean
-  }[]    
+  }[];    
 }
 
-
+interface DisplayByFacultyData {
+  faculty: string;
+  classes: {
+    class: string   // Hacked to show multiple sessions, for now ! ! !
+    , numberOfSections: number
+    , checked: boolean
+  }[];    
+}
 
 @Component({
   selector: 'app-root',
@@ -159,7 +166,7 @@ export class AppComponent {
 
   loadedSemesters = new Map<string, any[]>();
   currentSemesterByClass: DisplayByClassData[] = [];
-  currentSemesterByFaculty = [];
+  currentSemesterByFaculty: DisplayByFacultyData[] = [];
 
   previousSemester() {
       // First check semester to see if we have to switch the year.
@@ -265,7 +272,19 @@ export class AppComponent {
     this.currentSemesterByFaculty = [...groupedByFaculty]
       .map(x => ({
         faculty: x[0]
-        , classes: [...x[1]].map(y => ({ class: y[0], numberOfSections: y[1]})).sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
+        , classes: [
+          ...x[1]
+        ]
+        .map(y => ({ 
+          class: y[0]
+          , numberOfSections: y[1]
+          , checked: this.classesForUser.some(z => 
+            z.semester === `${this.displaySemester} ${this.displayYear}`
+            && z.classes.some(a => a.faculty === x[0])
+            && z.classes.some(a => a.class === y[0])
+          )
+        }))
+        .sort((a, b) => a.class == b.class ? 0 : a.class < b.class ? -1 : 1)
       }))
       .sort((a, b) => a.faculty == b.faculty ? 0 : a.faculty < b.faculty ? -1 : 1)
     ;

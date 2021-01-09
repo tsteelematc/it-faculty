@@ -177,6 +177,7 @@
             <mat-selection-list>
               <mat-list-option
                 *ngFor='let c of f.classes'
+                [selected]='c.checked'
               >
                 <span>
                   {{ c.class }} 
