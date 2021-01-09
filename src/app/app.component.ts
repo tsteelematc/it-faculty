@@ -38,6 +38,13 @@ export class AppComponent {
     //console.log(this.displaySemesterIndex);
 
     this.classesForUser = this.coursesSvc.loadUserClassesMock("tsteele@madisoncollege.edu");
+    this.UserClassesGroupedBySemester = [...this.classesForUser.reduce(
+      (acc: Map<string, string[]>, x) => acc.set(
+        x.semester
+        , acc.has(x.semester) ? [...acc.get(x.semester), x.class] : [x.class]
+      )
+      , new Map<string, string[]>()
+    )];
 
     this.loadAndInitializeTab();
   }
@@ -365,4 +372,6 @@ export class AppComponent {
     // Save the data back to the cloud.
 
   }
+
+  UserClassesGroupedBySemester = [];
 }

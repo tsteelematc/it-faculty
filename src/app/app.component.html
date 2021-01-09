@@ -222,6 +222,33 @@
           <amplify-sign-out>
           </amplify-sign-out>
         </mat-toolbar>
+        <div 
+          gdColumns.lt-md="100%"
+          gdColumns="50% 50%"
+          gdGap="10px"
+        >
+          <mat-card
+            *ngFor='let uc of UserClassesGroupedBySemester'
+          >
+            <mat-card-header>
+              <mat-icon matCardAvatar color='primary'>done</mat-icon>
+              <mat-card-title>
+                {{ uc[0] }}
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-selection-list>
+                <mat-list-option
+                  *ngFor='let c of uc[1]'
+                >
+                  <span>
+                    {{ c }} 
+                  </span>
+                  </mat-list-option>         
+              </mat-selection-list>
+            </mat-card-content>
+          </mat-card>
+        </div>  
       </amplify-authenticator>
     </mat-tab>
   </mat-tab-group>
