@@ -146,7 +146,7 @@
                 [(selected)]='f.checked'
                 (click)='toggleCheck(c.class, f)'
               >
-                {{ f.faculty }}
+                {{ f.facultyWithSessionCountIfNecessary }}
               </mat-list-option>         
             </mat-selection-list>
           </mat-card-content>

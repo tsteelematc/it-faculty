@@ -4,23 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
-interface DisplayByClassData {
-  class: string;
-  faculty: {
-    faculty: string   // Hacked to show multiple sessions, for now ! ! !
-    , checked: boolean
-  }[];    
-}
-
-interface DisplayByFacultyData {
-  faculty: string;
-  classes: {
-    class: string   // Hacked to show multiple sessions, for now ! ! !
-    , numberOfSections: number
-    , checked: boolean
-  }[];    
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -164,7 +147,7 @@ export class AppComponent {
   displayYear = this.today.getFullYear() + this.yearSemesterLookupByMonthData[this.today.getMonth()].yearOffset;
   displaySemesterIndex = this.yearSemesterLookupByMonthData[this.today.getMonth()].displaySemesterIndex;
 
-  loadedSemesters = new Map<string, any[]>();
+  loadedSemesters: CachedSemesterData = new Map();
   currentSemesterByClass: DisplayByClassData[] = [];
   currentSemesterByFaculty: DisplayByFacultyData[] = [];
 
@@ -232,7 +215,7 @@ export class AppComponent {
       ]
       // Then map it all to another object to add the checked property...
       .map(y => ({
-        faculty: y
+        facultyWithSessionCountIfNecessary: y
         // Checked lookup Logic here is i-o-g for sure : - )
         , checked: this.classesForUser.some(z => 
           z.semester === `${this.displaySemester} ${this.displayYear}`
