@@ -257,10 +257,30 @@
           </mat-card>
         </div>  
         <mat-toolbar>
-          <span style="flex: 1 1 auto;"></span>
+          <span 
+            style="flex: 1 1 auto;"
+            fxHide
+            fxShow.lt-md
+          ></span>
+          <span
+            style="font-size: 0.75em; opacity: 0.5;"
+            fxShow
+            fxHide.lt-md
+          >
+            tsteele@madisoncollege.edu
+          </span>
+          <span 
+            style="flex: 1 1 auto;"
+            fxShow
+            fxHide.lt-md
+          ></span>
           <amplify-sign-out>
           </amplify-sign-out>
-          <span style="flex: 1 1 auto;"></span>
+          <span 
+            style="flex: 1 1 auto;"
+            fxHide
+            fxShow.lt-md
+          ></span>
         </mat-toolbar>
       </amplify-authenticator>
     </mat-tab>
