@@ -393,4 +393,8 @@ export class AppComponent {
   }
 
   UserClassesGroupedBySemester = [];
+
+  get distinctFaculty(): string {
+    return [...new Set(this.classesForUser.map(x => x.faculty))].length.toString();
+  }
 }

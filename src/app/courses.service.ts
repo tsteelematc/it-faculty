@@ -71,6 +71,11 @@ loadCourses(semester: string): Promise<any> {
         , faculty: "Thomas Steele"
         , class: "SQL Database Programming"
       }    
+      , {
+        semester: "Fall 2020"
+        , faculty: "Aaron Gallus"
+        , class: "IT Service Concepts"
+      }   
     ];
   }
 
