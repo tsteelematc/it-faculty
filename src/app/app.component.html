@@ -226,7 +226,7 @@
           <span
             style="font-size: 0.75em; opacity: 0.5;"
           >
-            Showing {{ classesForUser.length }} classes over {{ UserClassesGroupedBySemester.length }} semesters, {{ distinctFaculty}} different faculty
+            Showing {{ classesForUser.length }} classes over {{ UserClassesGroupedBySemester.length }} semesters, <button mat-button matTooltip="Foo<br>Bar" matTooltipPosition="below" (click)="tooltip.toggle()">{{ distinctFaculty}}</button> different faculty
           </span>
         </mat-toolbar> 
         <div 

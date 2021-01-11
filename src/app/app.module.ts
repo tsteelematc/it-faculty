@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify from 'aws-amplify';
@@ -43,6 +44,7 @@ Amplify.configure(awsconfig);
     MatCheckboxModule,
     MatListModule,
     AmplifyUIAngularModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
