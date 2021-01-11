@@ -41,7 +41,7 @@ export class AppComponent {
     this.UserClassesGroupedBySemester = [...this.classesForUser.reduce(
       (acc: Map<string, string[]>, x) => acc.set(
         x.semester
-        , acc.has(x.semester) ? [...acc.get(x.semester), x.class] : [x.class]
+        , acc.has(x.semester) ? [...acc.get(x.semester), `${x.class} (${x.faculty})`] : [`${x.class} (${x.faculty})`]
       )
       , new Map<string, string[]>()
     )].map(x => ({
