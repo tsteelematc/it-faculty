@@ -123,8 +123,15 @@
       <ng-template mat-tab-label>
         <!-- <mat-icon color='primary'>crop_16_9</mat-icon>
         &nbsp; -->
-        Classes ({{ currentSemesterByClass.length }})
+        Classes
       </ng-template>
+      <mat-toolbar>
+        <span
+          style="font-size: 0.75em; opacity: 0.5;"
+        >
+        Showing {{ currentSemesterByClass.length }} classes
+        </span>
+      </mat-toolbar> 
       <div 
         gdColumns.lt-md="100%"
         gdColumns="50% 50%"
@@ -164,8 +171,15 @@
       <ng-template mat-tab-label>
         <!-- <mat-icon color='primary'>perm_identity</mat-icon>
         &nbsp; -->
-        Faculty ({{ currentSemesterByFaculty.length }})
+        Faculty
       </ng-template>
+      <mat-toolbar>
+        <span
+          style="font-size: 0.75em; opacity: 0.5;"
+        >
+        Showing {{ currentSemesterByFaculty.length }} faculty
+        </span>
+      </mat-toolbar> 
       <div 
         gdColumns.lt-md="100%"
         gdColumns="50% 50%"
@@ -173,8 +187,7 @@
       >
         <mat-card
           *ngFor='let f of currentSemesterByFaculty'
-        >
-        
+        >       
           <mat-card-header>
             <mat-icon matCardAvatar color='primary'>perm_identity</mat-icon>
             <mat-card-title>
@@ -206,15 +219,16 @@
       <ng-template mat-tab-label>
         <!-- <mat-icon color='primary'>done</mat-icon>
         &nbsp; -->
-        Me ({{ classesForUser.length }} classes over {{ UserClassesGroupedBySemester.length }} semesters)
+        Me
       </ng-template>
       <amplify-authenticator>
         <mat-toolbar>
-          <span style="flex: 1 1 auto;"></span>
-          <amplify-sign-out>
-          </amplify-sign-out>
-          <span style="flex: 1 1 auto;"></span>
-        </mat-toolbar>
+          <span
+            style="font-size: 0.75em; opacity: 0.5;"
+          >
+            Showing {{ classesForUser.length }} classes over {{ UserClassesGroupedBySemester.length }} semesters
+          </span>
+        </mat-toolbar> 
         <div 
           gdColumns.lt-md="100%"
           gdColumns="50% 50%"
@@ -242,6 +256,12 @@
             </mat-card-content>
           </mat-card>
         </div>  
+        <mat-toolbar>
+          <span style="flex: 1 1 auto;"></span>
+          <amplify-sign-out>
+          </amplify-sign-out>
+          <span style="flex: 1 1 auto;"></span>
+        </mat-toolbar>
       </amplify-authenticator>
     </mat-tab>
   </mat-tab-group>
